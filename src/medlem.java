@@ -43,7 +43,7 @@ public class medlem {
     }
 
     protected void betaltEllerKredit(){
-        if (betalingsStatus.equalsIgnoreCase("BETALT")) saldo = 0;
+        if (betalingsStatus.equalsIgnoreCase("Betalt")) saldo = 0;
     }
 
     public String getNavn() {
