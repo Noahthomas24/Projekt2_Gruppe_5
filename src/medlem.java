@@ -5,7 +5,7 @@ public class medlem {
     protected final String navn;
     protected final int alder;
     protected int saldo;
-    protected String betalingsstatus;
+    protected String betalingsStatus;
 
     protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR, AKTIV_PENSIO, PASSIV}
     protected medlemsStatus status;
@@ -15,7 +15,7 @@ public class medlem {
         this.navn = navn;
         alder = beregnAlder(dateOfBirth).getYears();
         this.aktivPassiv = aktivPassiv;
-        this.betalingsstatus = betalingsStatus;
+        this.betalingsStatus = betalingsStatus;
         bestemMedlemsStatus();
         medlemsPriser();
         betaltEllerKredit();
@@ -43,7 +43,7 @@ public class medlem {
     }
 
     protected void betaltEllerKredit(){
-        if (betalingsstatus.contains("BETALT")) saldo = 0;
+        if (betalingsStatus.equalsIgnoreCase("BETALT")) saldo = 0;
     }
 
     public String getNavn() {
@@ -67,7 +67,7 @@ public class medlem {
     }
 
     public static void main(String[] args) {
-        medlem a = new medlem("Julius", LocalDate.of(2000, 01, 29), "Aktiv", "BETALT");
-        System.out.println(a + ""+a.getSaldo());
+        medlem a = new medlem("Julius", LocalDate.of(2000, 01, 29), "Aktiv", "Kredit");
+        System.out.println(a + " - "+a.getSaldo()+" kr.");
     }
 }
