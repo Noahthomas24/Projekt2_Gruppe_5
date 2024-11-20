@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 
 public class medlem {
     protected final String navn;
@@ -8,8 +9,10 @@ public class medlem {
     protected String betalingsStatus;
 
     protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR, AKTIV_PENSIO, PASSIV}
+
     protected medlemsStatus status;
     protected String aktivPassiv;
+
 
     medlem(String navn, LocalDate dateOfBirth, String aktivPassiv, String betalingsStatus) {
         this.navn = navn;
@@ -21,11 +24,13 @@ public class medlem {
         betaltEllerKredit();
     }
 
-    protected Period beregnAlder(LocalDate dateOfBirth) {
+    public Period beregnAlder(LocalDate dateOfBirth) {
         LocalDate dagsDato = LocalDate.now();
         Period alder = Period.between(dateOfBirth, dagsDato);
         return alder;
     }
+
+
 
     protected void bestemMedlemsStatus() {
         if (aktivPassiv.contains("Passiv")) status = medlemsStatus.PASSIV;
