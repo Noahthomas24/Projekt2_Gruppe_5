@@ -1,21 +1,24 @@
 import java.time.LocalDate;
 import java.time.Period;
 
-public class medlem {
+public class Medlem {
     protected final String navn;
     protected final int alder;
+    protected LocalDate dateOfBirth;
     protected int saldo;
     protected String betalingsStatus;
+
 
     protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR, AKTIV_PENSIO, PASSIV}
     protected medlemsStatus status;
     protected String aktivPassiv;
 
-    medlem(String navn, LocalDate dateOfBirth, String aktivPassiv, String betalingsStatus) {
+    Medlem(String navn, LocalDate dateOfBirth, String aktivPassiv, String betalingsStatus) {
         this.navn = navn;
         alder = beregnAlder(dateOfBirth).getYears();
         this.aktivPassiv = aktivPassiv;
         this.betalingsStatus = betalingsStatus;
+        this.dateOfBirth=dateOfBirth;
         bestemMedlemsStatus();
         medlemsPriser();
         betaltEllerKredit();
@@ -27,11 +30,15 @@ public class medlem {
         return alder;
     }
 
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
     protected void bestemMedlemsStatus() {
         if (aktivPassiv.contains("Passiv")) status = medlemsStatus.PASSIV;
         if (alder < 18) status = medlemsStatus.AKTIV_JUNIOR;
-        if (alder > 18 && alder < 60) status = medlemsStatus.AKTIV_SENIOR;
-        if (alder > 60) status = medlemsStatus.AKTIV_PENSIO;
+        if (alder >= 18 && alder < 60) status = medlemsStatus.AKTIV_SENIOR;
+        if (alder >= 60) status = medlemsStatus.AKTIV_PENSIO;
     }
 
     protected int medlemsPriser(){
@@ -67,7 +74,7 @@ public class medlem {
     }
 
     public static void main(String[] args) {
-        medlem a = new medlem("Julius", LocalDate.of(2000, 01, 29), "Aktiv", "Kredit");
+        Medlem a = new Medlem("Julius", LocalDate.of(2000, 01, 29), "Aktiv", "Kredit");
         System.out.println(a + " - "+a.getSaldo()+" kr.");
     }
 }
