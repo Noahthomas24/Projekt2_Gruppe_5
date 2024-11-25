@@ -8,7 +8,6 @@ public class Medlem {
     protected int saldo;
     protected String betalingsStatus;
 
-
     protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR, AKTIV_PENSIO, PASSIV}
     protected medlemsStatus status;
     protected String aktivPassiv;
