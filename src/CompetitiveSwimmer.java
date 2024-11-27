@@ -16,7 +16,7 @@ public class CompetitiveSwimmer extends Medlem{
         if (alder >= 18) status = Medlem.medlemsStatus.AKTIV_SENIOR;
     }
 
-    public void tilføjDisciplin(String disciplin) {
+    public void addDisciplin(String disciplin) {
         if (!discipliner.contains(disciplin)){
             discipliner.add(disciplin);
         } else {
@@ -24,7 +24,7 @@ public class CompetitiveSwimmer extends Medlem{
         }
     }
 
-    public void fjernDisciplin(String disciplin) {
+    public void removeDisciplin(String disciplin) {
         if (discipliner.contains(disciplin)){
             discipliner.remove(disciplin);
         } else {
@@ -43,10 +43,10 @@ public class CompetitiveSwimmer extends Medlem{
 
     public static void main(String[] args) {
         CompetitiveSwimmer a = new CompetitiveSwimmer("Lars Testersen", LocalDate.of(2000,1,29), "BETALT");
-        a.tilføjDisciplin("Bryst");
-        a.tilføjDisciplin("Crawl");
+        a.addDisciplin("Bryst");
+        a.addDisciplin("Crawl");
         System.out.println(a);
-        a.fjernDisciplin("Crawl");
+        a.removeDisciplin("Crawl");
         System.out.println(a);
     }
 }
