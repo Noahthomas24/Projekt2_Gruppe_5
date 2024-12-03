@@ -8,7 +8,7 @@ public class Main {
         fileHandler.jsonWriter();
         SvoemmeMenu s = new SvoemmeMenu();
         s.SwimProgram();
-        fileHandler.medlemmer.get(4).setSaldo(-132);
+        Medlem.medlemmer.get(4).setSaldo(-132);
         fileHandler.getRestanceLise();
 
     }

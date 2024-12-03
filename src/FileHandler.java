@@ -38,8 +38,8 @@ public class FileHandler {
     public void getRestanceLise(){
         System.out.println("Følgende medlemmer er i gæld: ");
         System.out.println();
-        for (Medlem m:medlemmer){
-            if (m.saldo<0) System.out.println(m+" "+"Saldo: "+m.saldo);
+        for (Medlem m:Medlem.medlemmer){
+            if (m.saldo>0) System.out.println(m+" "+"Saldo: "+m.saldo);
         }
     }
 

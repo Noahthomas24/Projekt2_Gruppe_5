@@ -18,6 +18,7 @@ public class Medlem {
     protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR, AKTIV_PENSIO, PASSIV}
     protected medlemsStatus status;
     protected String aktivPassiv;
+
     Medlem(String navn, LocalDate dateOfBirth, String aktivPassiv, String betalingsStatus) {
         this.navn = navn;
         alder = beregnAlder(dateOfBirth).getYears();
