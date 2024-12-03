@@ -1,12 +1,17 @@
+import org.json.JSONException;
+
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Scanner;
 
 public class Medlem {
+    static Scanner scanner = new Scanner(System.in);
     protected final String navn;
     protected final int alder;
     protected LocalDate dateOfBirth;
     protected int saldo;
     protected String betalingsStatus;
+    String aktivitetsNiveau = "Motionist";
 
     protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR, AKTIV_PENSIO, PASSIV}
     protected medlemsStatus status;
@@ -21,6 +26,21 @@ public class Medlem {
         bestemMedlemsStatus();
         medlemsPriser();
         betaltEllerKredit();
+
+    }
+
+    public static void opretMedlem() throws JSONException {
+        System.out.println("Nu opretter vi et medlem bum");
+        System.out.println("Indtast navn");
+        String navn = scanner.nextLine();
+        System.out.println("Indtast fødselsdato ÅÅÅÅ,MM,DD");
+        LocalDate dateOfBirth = LocalDate.of(scanner.nextInt(),scanner.nextInt(),scanner.nextInt());
+        scanner.nextLine();
+        System.out.println("Er det et aktivt eller passivt medlem");
+        String aktivPassiv = scanner.nextLine();
+        System.out.println("Betalt eller kredit?");
+        String betalingsStatus = scanner.nextLine();
+        FileHandler.saveMedlem(new Medlem(navn, dateOfBirth, aktivPassiv, betalingsStatus));
     }
 
     protected Period beregnAlder(LocalDate dateOfBirth) {
@@ -68,6 +88,10 @@ public class Medlem {
         return saldo;
     }
 
+    public String getAktivitetsNiveau(){
+        return aktivitetsNiveau;
+    }
+
     public String toString(){
         return navn + " " + alder +" år - " +status;
     }
@@ -75,5 +99,6 @@ public class Medlem {
     public static void main(String[] args) {
         Medlem a = new Medlem("Julius", LocalDate.of(2000, 01, 29), "Aktiv", "Kredit");
         System.out.println(a + " - "+a.getSaldo()+" kr.");
+        FileHandler.medlemmer.add(a);
     }
 }

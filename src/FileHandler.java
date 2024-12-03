@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
-    ArrayList<Medlem> medlemmer = new ArrayList<>();
-    Scanner scanner = new Scanner(System.in);
+    public static ArrayList<Medlem> medlemmer = new ArrayList<>();
     public void InnitMedlemmer() throws JSONException {
         medlemmer.add(new Medlem("Mikeal Felpsr",LocalDate.of(1980, 12, 31), "Aktiv", "Kredit"));
         medlemmer.add(new Medlem("Noah Carter", LocalDate.of(2002, 10, 28), "Aktiv", "Kredit"));
@@ -32,13 +31,13 @@ public class FileHandler {
         InnitMedlemmer();
     }
 
-    public void saveMedlem (Medlem medlem) throws JSONException {
+    public static void saveMedlem (Medlem medlem) throws JSONException {
         medlemmer.add(medlem);
         jsonWriter();
 
     }
 
-    public void jsonWriter() throws JSONException {
+    public static void jsonWriter() throws JSONException {
         JSONArray jsonArray = new JSONArray();
         for (int i = 0; i < medlemmer.size(); i++) {
 
@@ -48,11 +47,12 @@ public class FileHandler {
             objItem.put("dateOfBirth", medlemmer.get(i).getDateOfBirth().toString());
             objItem.put("medlemsstatus", medlemmer.get(i).getMedlemsStatus().toString());
             objItem.put("saldo", String.valueOf(medlemmer.get(i).getSaldo()));
+            objItem.put("aktivitetsniveau", String.valueOf(medlemmer.get(i).getAktivitetsNiveau()));
 
             // Tilføjer objektet direkte til array
             jsonArray.put(objItem);
-
         }
+
         try (
                 FileWriter fil = new FileWriter("Oversigt over medlemmer.json")) {
             String formattedJson = jsonArray.toString();
@@ -64,7 +64,7 @@ public class FileHandler {
         }
 
     }
-    public void jsonReader(){
+    public static void jsonReader(){
         try (BufferedReader reader = new BufferedReader(new FileReader("Oversigt over medlemmer.json"))) {
             StringBuilder jsonContent = new StringBuilder();
             String line;
@@ -83,6 +83,7 @@ public class FileHandler {
                 String dateOfBirthString = jsonObject.getString("dateOfBirth");
                 String medlemsstatus = jsonObject.getString("medlemsstatus");
                 String saldo = jsonObject.getString("saldo");
+                String aktivitetsNiveau = jsonObject.getString("aktivitetsniveau");
 
                 //det her stykke kode omdanner den ovenstående dateOfBirthString til en Localdate der kan bruges.
                 LocalDate dateOfBirth = LocalDate.parse(dateOfBirthString, DateTimeFormatter.ISO_LOCAL_DATE);

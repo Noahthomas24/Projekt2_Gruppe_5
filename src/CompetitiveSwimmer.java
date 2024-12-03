@@ -1,3 +1,5 @@
+import org.json.JSONException;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -5,6 +7,7 @@ import java.util.List;
 public class CompetitiveSwimmer extends Medlem{
     private List<String> discipliner;
     protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR}
+    String aktivitetsNiveau = "Konkurrencesvømmer";
 
     public CompetitiveSwimmer(String navn, LocalDate dateOfBirth, String betalingsStatus) {
         super(navn, dateOfBirth, "Aktiv", betalingsStatus);
@@ -14,6 +17,18 @@ public class CompetitiveSwimmer extends Medlem{
     protected void bestemMedlemsStatus() {
         if (alder < 18) status = Medlem.medlemsStatus.AKTIV_JUNIOR;
         if (alder >= 18) status = Medlem.medlemsStatus.AKTIV_SENIOR;
+    }
+
+    public static void opretMedlem() throws JSONException {
+        System.out.println("Nu opretter vi et medlem");
+        System.out.println("Indtast navn");
+        String navn = scanner.nextLine();
+        System.out.println("Indtast fødselsdato ÅÅÅÅ,MM,DD");
+        LocalDate dateOfBirth = LocalDate.of(scanner.nextInt(),scanner.nextInt(),scanner.nextInt());
+        scanner.nextLine();
+        System.out.println("Betalt eller kredit?");
+        String betalingsStatus = scanner.nextLine();
+        FileHandler.saveMedlem(new CompetitiveSwimmer(navn, dateOfBirth, betalingsStatus));
     }
 
     public void addDisciplin(String disciplin) {
@@ -34,6 +49,10 @@ public class CompetitiveSwimmer extends Medlem{
 
     public List<String> getDiscipliner(){
         return discipliner;
+    }
+
+    public String getAktivitetsNiveau(){
+        return aktivitetsNiveau;
     }
 
     @Override
