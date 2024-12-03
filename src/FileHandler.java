@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
+    static JSONArray jsonArray = new JSONArray();
     public static ArrayList<Medlem> medlemmer = new ArrayList<>();
+
     public void InnitMedlemmer() throws JSONException {
         medlemmer.add(new Medlem("Mikeal Felpsr",LocalDate.of(1980, 12, 31), "Aktiv", "Kredit"));
         medlemmer.add(new Medlem("Noah Carter", LocalDate.of(2002, 10, 28), "Aktiv", "Kredit"));
@@ -28,7 +30,9 @@ public class FileHandler {
     }
 
     FileHandler () throws JSONException {
-        InnitMedlemmer();
+        jsonReader();
+        if (medlemmer.isEmpty()){
+            InnitMedlemmer();}
     }
 
     public static void saveMedlem (Medlem medlem) throws JSONException {
@@ -38,7 +42,7 @@ public class FileHandler {
     }
 
     public static void jsonWriter() throws JSONException {
-        JSONArray jsonArray = new JSONArray();
+        jsonArray = new JSONArray();
         for (int i = 0; i < medlemmer.size(); i++) {
 
             //Disse næste linje definere hvad et JSON object er. De omdanner alle værdierne til strings, og bliver til et objekt.
@@ -92,6 +96,7 @@ public class FileHandler {
                         ", Medlemsstatus: " + medlemsstatus + ", Saldo: " + saldo);
 
                 Medlem medlem = new Medlem(navn, dateOfBirth, medlemsstatus, saldo);
+                medlemmer.add(medlem);
 
             }
         } catch (IOException e) {

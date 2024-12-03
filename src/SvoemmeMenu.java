@@ -25,7 +25,9 @@ public class SvoemmeMenu {
                     valg = scanner.nextInt();
                     switch (valg){
                         case 1: Medlem.opretMedlem();
+                        break;
                         case 2: CompetitiveSwimmer.opretMedlem();
+                        break;
                     }
                 }
 
