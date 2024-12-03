@@ -35,6 +35,13 @@ public class FileHandler {
         jsonWriter();
 
     }
+    public void getRestanceLise(){
+        System.out.println("Følgende medlemmer er i gæld: ");
+        System.out.println();
+        for (Medlem m:medlemmer){
+            if (m.saldo<0) System.out.println(m+" "+"Saldo: "+m.saldo);
+        }
+    }
 
     public static void jsonWriter() throws JSONException {
         jsonArray = new JSONArray();
