@@ -33,7 +33,6 @@ public class FileHandler {
     }
 
     public void saveMedlem (Medlem medlem) throws JSONException {
-
         medlemmer.add(medlem);
         jsonWriter();
 
