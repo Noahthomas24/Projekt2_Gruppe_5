@@ -16,7 +16,7 @@ public class SvoemmeMenu {
             System.out.println("Tast '4' for at logge ind som admin");
             System.out.println("Tast '0' for at afslutte");
             valg=scanner.nextInt();
-            // Medlem.opretMedlem();
+
             if (valg==0) break;
             switch (valg){
                 case 1: {

@@ -12,46 +12,41 @@ import java.util.Scanner;
 
 public class FileHandler {
     static JSONArray jsonArray = new JSONArray();
-    public static ArrayList<Medlem> medlemmer = new ArrayList<>();
 
     public void InnitMedlemmer() throws JSONException {
-        medlemmer.add(new Medlem("Mikeal Felpsr",LocalDate.of(1980, 12, 31), "Aktiv", "Kredit"));
-        medlemmer.add(new Medlem("Noah Carter", LocalDate.of(2002, 10, 28), "Aktiv", "Kredit"));
-        medlemmer.add(new Medlem("julius Bay", LocalDate.of(1910, 1, 21), "Aktiv", "Kredit"));
-        medlemmer.add(new Medlem("Safire Storm", LocalDate.of(1983, 2, 18), "Aktiv", "Kredit"));
-        medlemmer.add(new Medlem("Mr Morsing", LocalDate.of(1965, 12, 16), "Passiv", "Kredit"));
-        medlemmer.add(new Medlem("Thamid Jabril", LocalDate.of(2006, 6, 5), "Aktiv", "Kredit"));
-        medlemmer.add(new Medlem("Oliver Nyam", LocalDate.of(2004, 9, 3), "Passiv", "Kredit"));
-        medlemmer.add(new Medlem("Signe Pedersen", LocalDate.of(1966, 2, 2), "Aktiv", "Kredit"));
-        medlemmer.add(new Medlem("Karsten Kristensen", LocalDate.of(2001, 12, 10), "Aktiv", "Kredit"));
-        medlemmer.add(new Medlem("Kian Corsa ", LocalDate.of(2013, 1, 3), "Passiv", "Kredit"));
+        Medlem.medlemmer.add(new Medlem("Mikeal Felpsr",LocalDate.of(1980, 12, 31), "Aktiv", "Kredit"));
+        Medlem.medlemmer.add(new Medlem("Noah Carter", LocalDate.of(2002, 10, 28), "Aktiv", "Kredit"));
+        Medlem.medlemmer.add(new Medlem("julius Bay", LocalDate.of(1910, 1, 21), "Aktiv", "Kredit"));
+        Medlem.medlemmer.add(new Medlem("Safire Storm", LocalDate.of(1983, 2, 18), "Aktiv", "Kredit"));
+        Medlem.medlemmer.add(new Medlem("Mr Morsing", LocalDate.of(1965, 12, 16), "Passiv", "Kredit"));
+     
 
         jsonWriter();
     }
 
     FileHandler () throws JSONException {
         jsonReader();
-        if (medlemmer.isEmpty()){
+        if (Medlem.medlemmer.isEmpty()){
             InnitMedlemmer();}
     }
 
     public static void saveMedlem (Medlem medlem) throws JSONException {
-        medlemmer.add(medlem);
+        Medlem.medlemmer.add(medlem);
         jsonWriter();
 
     }
 
     public static void jsonWriter() throws JSONException {
         jsonArray = new JSONArray();
-        for (int i = 0; i < medlemmer.size(); i++) {
+        for (int i = 0; i < Medlem.medlemmer.size(); i++) {
 
             //Disse næste linje definere hvad et JSON object er. De omdanner alle værdierne til strings, og bliver til et objekt.
             JSONObject objItem = new JSONObject();
-            objItem.put("navn", medlemmer.get(i).getNavn());
-            objItem.put("dateOfBirth", medlemmer.get(i).getDateOfBirth().toString());
-            objItem.put("medlemsstatus", medlemmer.get(i).getMedlemsStatus().toString());
-            objItem.put("saldo", String.valueOf(medlemmer.get(i).getSaldo()));
-            objItem.put("aktivitetsniveau", String.valueOf(medlemmer.get(i).getAktivitetsNiveau()));
+            objItem.put("navn", Medlem.medlemmer.get(i).getNavn());
+            objItem.put("dateOfBirth", Medlem.medlemmer.get(i).getDateOfBirth().toString());
+            objItem.put("medlemsstatus", Medlem.medlemmer.get(i).getMedlemsStatus().toString());
+            objItem.put("saldo", String.valueOf(Medlem.medlemmer.get(i).getSaldo()));
+            objItem.put("aktivitetsniveau", String.valueOf(Medlem.medlemmer.get(i).getAktivitetsNiveau()));
 
             // Tilføjer objektet direkte til array
             jsonArray.put(objItem);
@@ -96,7 +91,7 @@ public class FileHandler {
                         ", Medlemsstatus: " + medlemsstatus + ", Saldo: " + saldo);
 
                 Medlem medlem = new Medlem(navn, dateOfBirth, medlemsstatus, saldo);
-                medlemmer.add(medlem);
+                Medlem.medlemmer.add(medlem);
 
             }
         } catch (IOException e) {
