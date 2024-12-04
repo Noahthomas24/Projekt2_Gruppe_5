@@ -17,7 +17,7 @@ public class FileHandler {
         public void InnitMedlemmer() throws JSONException {
             Medlem.medlemmer.add(new Medlem("Mikeal Felpsr", LocalDate.of(1980, 12, 31), "Aktiv", "Kredit"));
             Medlem.medlemmer.add(new Medlem("Noah Carter", LocalDate.of(2002, 10, 28), "Aktiv", "Kredit"));
-            Medlem.medlemmer.add(new Medlem("julius Bay", LocalDate.of(1910, 1, 21), "Aktiv", "Kredit"));
+            Medlem.medlemmer.add(new Medlem("Julius Bay", LocalDate.of(1910, 1, 21), "Aktiv", "Kredit"));
             Medlem.medlemmer.add(new Medlem("Safire Storm", LocalDate.of(1983, 2, 18), "Aktiv", "Kredit"));
             Medlem.medlemmer.add(new Medlem("Mr Morsing", LocalDate.of(1965, 12, 16), "Passiv", "Kredit"));
 
@@ -26,9 +26,11 @@ public class FileHandler {
         }
 
         public void InnitResultater() throws JSONException {
-            Resultat.resultater.add(new Resultat("Safire Storm", "Træning", "Rygcrawl", LocalTime.of(0,29,12,100000000)));
-            Resultat.resultater.add(new Resultat("Noah Carter", "Stævne", "Rygcrawl", LocalTime.of(0,29,40,100000000)));
-            Resultat.resultater.add(new Resultat("Julius Bay", "Stævne", "Rygcrawl", LocalTime.of(0,29,9,100000000)));
+            Resultat.resultater.add(new Resultat(1, "Træning", "Rygcrawl", LocalTime.of(0,29,12,100000000)));
+            Resultat.resultater.add(new Resultat(2, "Stævne", "Rygcrawl", LocalTime.of(0,29,40,100000000)));
+            Resultat.resultater.add(new Resultat(3, "Stævne", "Rygcrawl", LocalTime.of(0,29,9,100000000)));
+
+            jsonWriterResult();
         }
 
         FileHandler() throws JSONException {
@@ -129,6 +131,7 @@ public class FileHandler {
 
                 //Disse næste linje definere hvad et JSON object er. De omdanner alle værdierne til strings, og bliver til et objekt.
                 JSONObject objItem1 = new JSONObject();
+                objItem1.put("brugerID", Resultat.resultater.get(i).medlem.getBrugerID());
                 objItem1.put("navn", Resultat.resultater.get(i).medlem.getNavn());
                 objItem1.put("disciplin", Resultat.resultater.get(i).getDisciplin().toString());
                 objItem1.put("resultattid", Resultat.resultater.get(i).getResTid().toString());
@@ -165,6 +168,7 @@ public class FileHandler {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     //Dette kode gør det modsatte. Den tager objektet og omdanner det til brugbare værdier
+                    int iD = jsonObject.getInt("Bruger-ID");
                     String navn = jsonObject.getString("navn");
                     String disciplin = jsonObject.getString("disciplin");
                     String resultattidstring = jsonObject.getString("resultattid");
@@ -173,9 +177,9 @@ public class FileHandler {
                     LocalTime resultattid = LocalTime.parse(resultattidstring);
 
                     System.out.println("Navn: " + navn + ", Disciplin: " + disciplin +
-                            ", Resultattid: " + resultattid);
+                            ", Resultattid: " + resultattid + ", Session: " + session);
 
-                    Resultat resultat = new Resultat(navn, session, disciplin, resultattid);
+                    Resultat resultat = new Resultat(iD, session, disciplin, resultattid);
                     Resultat.resultater.add(resultat);
 
                 }

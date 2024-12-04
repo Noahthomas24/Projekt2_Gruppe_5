@@ -12,16 +12,16 @@ public class Resultat implements Comparable<Resultat>{
     String session; //Træning eller stævne
     public DateTimeFormatter format = DateTimeFormatter.ofPattern("mm:ss:SS");
 
-    Resultat (String navn, String session, String disciplin, LocalTime resTid){
-        checkNavn(navn);
+    Resultat (int brugerID, String session, String disciplin, LocalTime resTid){
+        checkID(brugerID);
         this.disciplin = disciplin;
         this.resTid = resTid;
         this.session = session;
     }
 
-    public boolean checkNavn(String navn) {
+    public boolean checkID(int brugerID) {
         for (Medlem m : Medlem.medlemmer) {
-            if (navn.equalsIgnoreCase(m.getNavn())) {
+            if (m.brugerID == brugerID) {
                 this.medlem = m;
                 return true;
             }
@@ -42,12 +42,12 @@ public class Resultat implements Comparable<Resultat>{
     }
 
     public void addResultat(){
-        System.out.println("Hvad er svømmerens navn?");
-        String navn = keyboard.nextLine();
+        System.out.println("Hvad er svømmerens bruger-ID?");
+        int iD = keyboard.nextInt();
         System.out.println();
 
-        if (!checkNavn(navn)) {
-            System.out.println("Resultat blev ikke oprettet, da navnet ikke blev fundet.");
+        if (!checkID(iD)) {
+            System.out.println("Resultat blev ikke oprettet, da ID'et ikke eksisterer.");
             return;
         }
 
@@ -68,7 +68,7 @@ public class Resultat implements Comparable<Resultat>{
 
         LocalTime resTid = verificerTid();
 
-        resultater.add(new Resultat(navn, session, disciplin, resTid));
+        resultater.add(new Resultat(iD, session, disciplin, resTid));
     }
 
     public LocalTime verificerTid(){
