@@ -106,8 +106,6 @@ public class FileHandler {
         } catch (org.json.JSONException e) {
             System.out.println("JSON Parsing Error: " + e.getMessage());
         }
-
-
     }
 }
 
