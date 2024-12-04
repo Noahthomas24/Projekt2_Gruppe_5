@@ -35,9 +35,7 @@ public class Medlem {
         System.out.println("Nu opretter vi et medlem bum");
         System.out.println("Indtast navn");
         String navn = scanner.nextLine();
-        System.out.println("Indtast fødselsdato ÅÅÅÅ,MM,DD");
-        LocalDate dateOfBirth = LocalDate.of(scanner.nextInt(),scanner.nextInt(),scanner.nextInt());
-        scanner.nextLine();
+        LocalDate dateOfBirth = TryCatch.indtastDato();
         System.out.println("Er det et aktivt eller passivt medlem");
         String aktivPassiv = scanner.nextLine();
         System.out.println("Betalt eller kredit?");

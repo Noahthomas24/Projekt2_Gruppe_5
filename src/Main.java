@@ -7,7 +7,7 @@ public class Main {
         FileHandler fileHandler= new FileHandler();
         fileHandler.jsonWriter();
         SvoemmeMenu s = new SvoemmeMenu();
-        s.SwimProgram();
+        s.formandMenu();
 
     }
 }
