@@ -176,8 +176,8 @@
 },
 {
 "brugerID":23,
-"medlemsstatus":"PASSIV",
-"aktivitetsniveau":"Motionist",
+"medlemsstatus":"AKTIV_JUNIOR",
+"aktivitetsniveau":"Konkurrencesvømmer",
 "navn":"Nol",
 "dateOfBirth":"2013-12-12",
 "saldo":"1000"
@@ -219,6 +219,14 @@
 "medlemsstatus":"AKTIV_JUNIOR",
 "aktivitetsniveau":"Motionist",
 "navn":"nasad",
+"dateOfBirth":"2012-12-12",
+"saldo":"1000"
+},
+{
+"brugerID":29,
+"medlemsstatus":"AKTIV_JUNIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Noah",
 "dateOfBirth":"2012-12-12",
 "saldo":"1000"
 }]

@@ -28,26 +28,7 @@ public class SvoemmeMenu {
             }
         }
     }
-    public void setAktivPassiv() throws JSONException {
-        System.out.println("Vælg brugerID");
-        Medlem valgtMedlem = Medlem.medlemmer.get(TryCatch.indtastTal() - 1);
-        System.out.println("Tryk 1 for at sætte medlem som aktiv");
-        System.out.println("Tryk 2 for at sætte medlem som passiv");
-        int valgAktivPassiv = TryCatch.indtastTal();
-        switch (valgAktivPassiv) {
-            case 1:
-                valgtMedlem.aktivPassiv = "aktiv";
-                valgtMedlem.bestemMedlemsStatus();
-                System.out.println(valgtMedlem);
-                FileHandler.jsonWriter();
-                break;
-            case 2:
-                valgtMedlem.status = Medlem.medlemsStatus.PASSIV;
-                System.out.println(valgtMedlem);
-                FileHandler.jsonWriter();
-                break;
-        }
-    }
+
 
     public static void formandMenu() throws JSONException {
         while (true){
@@ -55,6 +36,7 @@ public class SvoemmeMenu {
             System.out.println("Tast '1' for at oprette et medlem");
             System.out.println("Tast '2' for at ændre medlemsstatus");
             System.out.println("Tast '3' for at slette et medlemskab");
+            System.out.println("Tast '4' for at ændre konkurrencestatus");
             System.out.println("Tast '0' for at gå til forrige side");
             int valg= TryCatch.indtastTal();
             if (valg == 0) break;
@@ -95,6 +77,26 @@ public class SvoemmeMenu {
                 case 3:
                     // Medlem.sletMedlem
                     break;
+                case 4:
+                    // Set motionist eller konkurrencesvømmer
+                    System.out.println("Vælg brugerID");
+                    Medlem valgtMedlem1 = Medlem.medlemmer.get(TryCatch.indtastTal()-1);
+                    System.out.println("Tryk 1 for at sætte medlem som Konkurrencesvømmer");
+                    System.out.println("Tryk 2 for at sætte medlem som Motionist");
+                    int valgKonkurrenceMotion = TryCatch.indtastTal();
+                    switch (valgKonkurrenceMotion) {
+                        case 1:
+                            valgtMedlem1.aktivitetsNiveau = "Konkurrencesvømmer";
+                            valgtMedlem1.bestemMedlemsStatus();
+                            System.out.println(valgtMedlem1);
+                            FileHandler.jsonWriter();
+                            break;
+                        case 2:
+                            valgtMedlem1.aktivitetsNiveau = "Motionist";
+                            System.out.println(valgtMedlem1);
+                            FileHandler.jsonWriter();
+                            break;
+                    }
                 default:
                     System.out.println("Ikke en mulighed, prøv igen.");
             }
@@ -102,7 +104,7 @@ public class SvoemmeMenu {
 
     }
 
-    public static void traenerMenu() {
+    public static void traenerMenu() throws JSONException {
         while (true) {
             System.out.println("Du har nu følgende muligheder");
             System.out.println("Tast '1' for at ");
@@ -119,6 +121,9 @@ public class SvoemmeMenu {
                     break;
                 case 3: // 5 bedste resultater
                     break;
+                case 4:
+                    break;
+
                 default:
                     System.out.println("Ikke en mulighed, prøv igen.");
             }
