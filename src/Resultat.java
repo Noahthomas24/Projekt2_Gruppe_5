@@ -1,6 +1,3 @@
-import java.sql.Array;
-import java.time.DateTimeException;
-import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -15,10 +12,11 @@ public class Resultat implements Comparable<Resultat>{
     String session; //Træning eller stævne
     public DateTimeFormatter format = DateTimeFormatter.ofPattern("mm:ss:SS");
 
-    Resultat (String navn, String disciplin, LocalTime resTid){
+    Resultat (String navn, String session, String disciplin, LocalTime resTid){
         checkNavn(navn);
         this.disciplin = disciplin;
         this.resTid = resTid;
+        this.session = session;
     }
 
     public boolean checkNavn(String navn) {
@@ -60,17 +58,17 @@ public class Resultat implements Comparable<Resultat>{
 
         System.out.println("Tast 1 for træningstid, tast 2 for stævne");
         int sessionsForm = Medlem.scanner.nextInt();
-            switch (sessionsForm){
-                case 1: session = "Træningstid";
-                    break;
-                case 2: session = "Stævne";
-                    break;
-            }
+        switch (sessionsForm){
+            case 1: session = "Træningstid";
+                break;
+            case 2: session = "Stævne";
+                break;
+        }
 
 
         LocalTime resTid = verificerTid();
 
-        resultater.add(new Resultat(navn, disciplin, resTid));
+        resultater.add(new Resultat(navn, session, disciplin, resTid));
     }
 
     public LocalTime verificerTid(){
@@ -95,18 +93,5 @@ public class Resultat implements Comparable<Resultat>{
 
     public LocalTime getResTid(){ return resTid;}
 
-    public static void main(String[] args) {
-        Resultat r1 = new Resultat("Safire Storm", "Rygcrawl", LocalTime.of(0,29,12,100000000));
-        Resultat r2 = new Resultat("Noah Carter", "Rygcrawl", LocalTime.of(0,29,40,100000000));
-        Resultat r3 = new Resultat("Julius Bay", "Rygcrawl", LocalTime.of(0,29,9,100000000));
-
-        resultater.add(new Resultat("Safire Storm", "Rygcrawl", LocalTime.of(0,29,12,100000000)));
-        resultater.add(new Resultat("Noah Carter", "Rygcrawl", LocalTime.of(0,29,40,100000000)));
-        resultater.add(new Resultat("Julius Bay", "Rygcrawl", LocalTime.of(0,29,9,100000000)));
-
-        for (Resultat r:resultater){
-           System.out.println(r);
-        }
-
-    }
+    public String getSession(){ return session; }
 }
