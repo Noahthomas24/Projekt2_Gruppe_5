@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Medlem {
+    protected int brugerID;
     static Scanner scanner = new Scanner(System.in);
     public static ArrayList<Medlem> medlemmer = new ArrayList<>();
     protected final String navn;
@@ -20,6 +21,7 @@ public class Medlem {
     protected String aktivPassiv;
 
     Medlem(String navn, LocalDate dateOfBirth, String aktivPassiv, String betalingsStatus) {
+        brugerID = medlemmer.size()+1;
         this.navn = navn;
         alder = beregnAlder(dateOfBirth).getYears();
         this.aktivPassiv = aktivPassiv;
@@ -48,9 +50,24 @@ public class Medlem {
         Period alder = Period.between(dateOfBirth, dagsDato);
         return alder;
     }
-
+    public int getBrugerID(){
+        return brugerID;
+    }
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
+    }
+    protected void setAktivPassiv(int valgAktivPassiv){
+        System.out.println("Vælg brugerID");
+        Medlem.medlemmer.get(TryCatch.indtastTal()+1);
+        System.out.println("Tryk 1 for at sætte medlem som aktiv");
+        System.out.println("Tryk 2 for at sætte medlem som passiv");
+        TryCatch.indtastTal();
+        switch (valgAktivPassiv){
+            case 1:
+
+
+        }
+
     }
 
     protected void bestemMedlemsStatus() {

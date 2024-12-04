@@ -49,6 +49,7 @@ public class FileHandler {
 
             //Disse næste linje definere hvad et JSON object er. De omdanner alle værdierne til strings, og bliver til et objekt.
             JSONObject objItem = new JSONObject();
+            objItem.put("brugerID",Medlem.medlemmer.get(i).getBrugerID());
             objItem.put("navn", Medlem.medlemmer.get(i).getNavn());
             objItem.put("dateOfBirth", Medlem.medlemmer.get(i).getDateOfBirth().toString());
             objItem.put("medlemsstatus", Medlem.medlemmer.get(i).getMedlemsStatus().toString());
@@ -85,6 +86,7 @@ public class FileHandler {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                 //Dette kode gør det modsatte. Den tager objektet og omdanner det til brugbare værdier
+                int brugerID = jsonObject.getInt("brugerID");
                 String navn = jsonObject.getString("navn");
                 String dateOfBirthString = jsonObject.getString("dateOfBirth");
                 String medlemsstatus = jsonObject.getString("medlemsstatus");
@@ -94,7 +96,7 @@ public class FileHandler {
                 //det her stykke kode omdanner den ovenstående dateOfBirthString til en Localdate der kan bruges.
                 LocalDate dateOfBirth = LocalDate.parse(dateOfBirthString, DateTimeFormatter.ISO_LOCAL_DATE);
 
-                System.out.println("Navn: " + navn + ", Fødselsdato: " + dateOfBirth +
+                System.out.println("brugerID: "+brugerID+" "+"Navn: " + navn + ", Fødselsdato: " + dateOfBirth +
                         ", Medlemsstatus: " + medlemsstatus + ", Saldo: " + saldo);
 
                 Medlem medlem = new Medlem(navn, dateOfBirth, medlemsstatus, saldo);
