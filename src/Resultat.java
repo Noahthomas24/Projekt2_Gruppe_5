@@ -11,16 +11,32 @@ public class Resultat implements Comparable<Resultat>{
     String navn;
     String disciplin;
     LocalTime resTid;
-    DateTimeFormatter format = DateTimeFormatter.ofPattern("mm:ss:SS");
+    Medlem medlem;
+    String session; //Træning eller stævne
+    public DateTimeFormatter format = DateTimeFormatter.ofPattern("mm:ss:SS");
 
     Resultat (String navn, String disciplin, LocalTime resTid){
-        this.navn = navn;
+        checkNavn(navn);
         this.disciplin = disciplin;
         this.resTid = resTid;
     }
 
+    public boolean checkNavn(String navn) {
+        for (Medlem m : Medlem.medlemmer) {
+            if (navn.equalsIgnoreCase(m.getNavn())) {
+                this.medlem = m;
+                return true;
+            }
+        }
+        System.out.println("Vedkommende er ikke medlem hos os.");
+        return false;
+    }
+
     public String toString(){
-        return navn+": "+resTid.format(format);
+        if (medlem == null) {
+            return "Ugyldigt resultat (medlem ikke fundet)";
+        }
+        return medlem.navn+": "+resTid.format(format);
     }
 
     public int compareTo(Resultat other){
@@ -32,9 +48,25 @@ public class Resultat implements Comparable<Resultat>{
         String navn = keyboard.nextLine();
         System.out.println();
 
+        if (!checkNavn(navn)) {
+            System.out.println("Resultat blev ikke oprettet, da navnet ikke blev fundet.");
+            return;
+        }
+
+
         System.out.println("Hvilken disciplin?");
         String disciplin = keyboard.nextLine();
         System.out.println();
+
+        System.out.println("Tast 1 for træningstid, tast 2 for stævne");
+        int sessionsForm = Medlem.scanner.nextInt();
+            switch (sessionsForm){
+                case 1: session = "Træningstid";
+                    break;
+                case 2: session = "Stævne";
+                    break;
+            }
+
 
         LocalTime resTid = verificerTid();
 
@@ -59,18 +91,19 @@ public class Resultat implements Comparable<Resultat>{
         return tid;
     }
 
+    public String getDisciplin(){ return disciplin;}
+
+    public LocalTime getResTid(){ return resTid;}
+
     public static void main(String[] args) {
-        Resultat r1 = new Resultat("Ole", "Rygcrawl", LocalTime.of(0,29,12,100000000));
-        Resultat r2 = new Resultat("Bo", "Rygcrawl", LocalTime.of(0,29,40,100000000));
-        Resultat r3 = new Resultat("Odaae", "Rygcrawl", LocalTime.of(0,40,12,100000000));
-        Resultat r4 = new Resultat("Odan", "Rygcrawl", LocalTime.of(0,29,9,100000000));
+        Resultat r1 = new Resultat("Safire Storm", "Rygcrawl", LocalTime.of(0,29,12,100000000));
+        Resultat r2 = new Resultat("Noah Carter", "Rygcrawl", LocalTime.of(0,29,40,100000000));
+        Resultat r3 = new Resultat("Julius Bay", "Rygcrawl", LocalTime.of(0,29,9,100000000));
 
-        resultater.add(new Resultat("Ole", "Rygcrawl", LocalTime.of(0,29,12,100000000)));
-        resultater.add(new Resultat("Bo", "Rygcrawl", LocalTime.of(0,29,40,100000000)));
-        resultater.add(new Resultat("Odaae", "Rygcrawl", LocalTime.of(0,40,12,100000000)));
-        resultater.add(new Resultat("Odan", "Rygcrawl", LocalTime.of(0,29,9,100000000)));
+        resultater.add(new Resultat("Safire Storm", "Rygcrawl", LocalTime.of(0,29,12,100000000)));
+        resultater.add(new Resultat("Noah Carter", "Rygcrawl", LocalTime.of(0,29,40,100000000)));
+        resultater.add(new Resultat("Julius Bay", "Rygcrawl", LocalTime.of(0,29,9,100000000)));
 
-        resultater.sort(null);
         for (Resultat r:resultater){
            System.out.println(r);
         }

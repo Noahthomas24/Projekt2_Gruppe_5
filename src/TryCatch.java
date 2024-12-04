@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class TryCatch {
+    String password = "123";
 
     public static int indtastTal(){
         while (true){

@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,32 +15,44 @@ public class FileHandler {
     static JSONArray jsonArray = new JSONArray();
 
     public void InnitMedlemmer() throws JSONException {
-        Medlem.medlemmer.add(new Medlem("Mikeal Felpsr",LocalDate.of(1980, 12, 31), "Aktiv", "Kredit"));
+        Medlem.medlemmer.add(new Medlem("Mikeal Felpsr", LocalDate.of(1980, 12, 31), "Aktiv", "Kredit"));
         Medlem.medlemmer.add(new Medlem("Noah Carter", LocalDate.of(2002, 10, 28), "Aktiv", "Kredit"));
         Medlem.medlemmer.add(new Medlem("julius Bay", LocalDate.of(1910, 1, 21), "Aktiv", "Kredit"));
         Medlem.medlemmer.add(new Medlem("Safire Storm", LocalDate.of(1983, 2, 18), "Aktiv", "Kredit"));
         Medlem.medlemmer.add(new Medlem("Mr Morsing", LocalDate.of(1965, 12, 16), "Passiv", "Kredit"));
-     
+
 
         jsonWriter();
     }
 
-    FileHandler () throws JSONException {
-        jsonReader();
-        if (Medlem.medlemmer.isEmpty()){
-            InnitMedlemmer();}
+    public void InnitResultater() throws JSONException {
+        Resultat.resultater.add(new Resultat("Safire Storm", "Rygcrawl", LocalTime.of(0,29,12,100000000)));
+        Resultat.resultater.add(new Resultat("Noah Carter", "Rygcrawl", LocalTime.of(0,29,40,100000000)));
+        Resultat.resultater.add(new Resultat("Julius Bay", "Rygcrawl", LocalTime.of(0,29,9,100000000)));
     }
 
-    public static void saveMedlem (Medlem medlem) throws JSONException {
+    FileHandler() throws JSONException {
+        jsonReader();
+        jsonReaderResult();
+        if (Medlem.medlemmer.isEmpty()) {
+            InnitMedlemmer();
+        }
+        if (Resultat.resultater.isEmpty()){
+            InnitResultater();
+        }
+    }
+
+    public static void saveMedlem(Medlem medlem) throws JSONException {
         Medlem.medlemmer.add(medlem);
         jsonWriter();
 
     }
-    public void getRestanceLise(){
+
+    public void getRestanceLise() {
         System.out.println("Følgende medlemmer er i gæld: ");
         System.out.println();
-        for (Medlem m:Medlem.medlemmer){
-            if (m.saldo>0) System.out.println(m+" "+"Saldo: "+m.saldo);
+        for (Medlem m : Medlem.medlemmer) {
+            if (m.saldo > 0) System.out.println(m + " " + "Saldo: " + m.saldo);
         }
     }
 
@@ -66,12 +79,13 @@ public class FileHandler {
             fil.write(formattedJson.replaceAll("\\{", "{\n").replaceAll("\\}", "\n}").replaceAll(",", ",\n"));
             System.out.println("Fil succesfuldt overført");
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
 
     }
-    public static void jsonReader(){
+
+    public static void jsonReader() {
         try (BufferedReader reader = new BufferedReader(new FileReader("Oversigt over medlemmer.json"))) {
             StringBuilder jsonContent = new StringBuilder();
             String line;
@@ -109,6 +123,66 @@ public class FileHandler {
             System.out.println("JSON Parsing Error: " + e.getMessage());
         }
     }
-}
 
+    public static void jsonWriterResult() throws JSONException {
+        jsonArray = new JSONArray();
+        for (int i = 0; i < Resultat.resultater.size(); i++) {
+
+            //Disse næste linje definere hvad et JSON object er. De omdanner alle værdierne til strings, og bliver til et objekt.
+            JSONObject objItem1 = new JSONObject();
+            objItem1.put("navn", Resultat.resultater.get(i).medlem.getNavn());
+            objItem1.put("disciplin", Resultat.resultater.get(i).getDisciplin().toString());
+            objItem1.put("resultattid", Resultat.resultater.get(i).getResTid().toString());
+
+            // Tilføjer objektet direkte til array
+            jsonArray.put(objItem1);
+        }
+
+        try (
+                FileWriter fil = new FileWriter("Resultater for svømmere.json")) {
+            String formattedJson = jsonArray.toString();
+            fil.write(formattedJson.replaceAll("\\{", "{\n").replaceAll("\\}", "\n}").replaceAll(",", ",\n"));
+            System.out.println("Fil succesfuldt overført");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
+    public static void jsonReaderResult() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Resultater for svømmere.json"))) {
+            StringBuilder jsonContent = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                jsonContent.append(line);
+            }
+
+            JSONArray jsonArray = new JSONArray(jsonContent.toString());
+
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                //Dette kode gør det modsatte. Den tager objektet og omdanner det til brugbare værdier
+                String navn = jsonObject.getString("navn");
+                String disciplin = jsonObject.getString("disciplin");
+                String resultattidstring = jsonObject.getString("resultattid");
+
+                LocalTime resultattid = LocalTime.parse(resultattidstring);
+
+                System.out.println("Navn: " + navn + ", Disciplin: " + disciplin +
+                        ", Resultattid: " + resultattid);
+
+                Resultat resultat = new Resultat(navn, disciplin, resultattid);
+                Resultat.resultater.add(resultat);
+
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        } catch (org.json.JSONException e) {
+            System.out.println("JSON Parsing Error: " + e.getMessage());
+        }
+    }
+}
 
