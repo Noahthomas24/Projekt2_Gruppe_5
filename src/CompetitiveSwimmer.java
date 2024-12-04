@@ -23,8 +23,7 @@ public class CompetitiveSwimmer extends Medlem{
         System.out.println("Nu opretter vi et medlem");
         System.out.println("Indtast navn");
         String navn = scanner.nextLine();
-        System.out.println("Indtast fødselsdato ÅÅÅÅ,MM,DD");
-        LocalDate dateOfBirth = LocalDate.of(scanner.nextInt(),scanner.nextInt(),scanner.nextInt());
+        LocalDate dateOfBirth = TryCatch.indtastDato();
         scanner.nextLine();
         System.out.println("Betalt eller kredit?");
         String betalingsStatus = scanner.nextLine();
