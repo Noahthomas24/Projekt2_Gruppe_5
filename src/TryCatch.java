@@ -34,6 +34,7 @@ public class TryCatch {
 
     // Bekræfter kodeord
     public boolean verifyPassword() {
+        String password = "somethingsomething"; // husk at ændre password
         System.out.println("Indtast kodeord");
         Medlem.scanner.nextLine();
         String kodeord = Medlem.scanner.nextLine();

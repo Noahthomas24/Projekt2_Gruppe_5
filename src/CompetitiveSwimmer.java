@@ -24,7 +24,6 @@ public class CompetitiveSwimmer extends Medlem{
         System.out.println("Indtast navn");
         String navn = scanner.nextLine();
         LocalDate dateOfBirth = TryCatch.indtastDato();
-        scanner.nextLine();
         System.out.println("Betalt eller kredit?");
         String betalingsStatus = scanner.nextLine();
         FileHandler.saveMedlem(new CompetitiveSwimmer(navn, dateOfBirth, betalingsStatus));
