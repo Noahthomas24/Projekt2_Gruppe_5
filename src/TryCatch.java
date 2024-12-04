@@ -32,5 +32,17 @@ public class TryCatch {
         return dato;
     }
 
+    // Bekræfter kodeord
+    public boolean verifyPassword() {
+        System.out.println("Indtast kodeord");
+        Medlem.scanner.nextLine();
+        String kodeord = Medlem.scanner.nextLine();
+        while (!kodeord.equals(password)) {
+            System.out.println("Ugyldigt kodeord, prøv igen");
+            kodeord = Medlem.scanner.nextLine();
+        }
+        return true;
+    }
+
 }
 
