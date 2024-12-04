@@ -1,3 +1,6 @@
+import org.json.JSONException;
+
+import java.io.File;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -41,7 +44,7 @@ public class Resultat implements Comparable<Resultat>{
         return this.resTid.compareTo(other.resTid);
     }
 
-    public void addResultat(){
+    public void addResultat() throws JSONException {
         System.out.println("Hvad er svømmerens bruger-ID?");
         int iD = keyboard.nextInt();
         System.out.println();
@@ -67,8 +70,7 @@ public class Resultat implements Comparable<Resultat>{
 
 
         LocalTime resTid = verificerTid();
-
-        resultater.add(new Resultat(iD, session, disciplin, resTid));
+        FileHandler.saveResult(new Resultat(iD, session, disciplin, resTid));
     }
 
     public LocalTime verificerTid(){

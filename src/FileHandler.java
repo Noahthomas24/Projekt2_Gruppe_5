@@ -47,7 +47,6 @@ public class FileHandler {
         public static void saveMedlem(Medlem medlem) throws JSONException {
             Medlem.medlemmer.add(medlem);
             jsonWriter();
-
         }
 
         public void getRestanceLise() {
@@ -123,6 +122,11 @@ public class FileHandler {
             } catch (org.json.JSONException e) {
                 System.out.println("JSON Parsing Error: " + e.getMessage());
             }
+        }
+
+        public static void saveResult(Resultat resultat) throws JSONException {
+            Resultat.resultater.add(resultat);
+            jsonWriterResult();
         }
 
         public static void jsonWriterResult() throws JSONException {
