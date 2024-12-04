@@ -24,7 +24,7 @@ public class SvoemmeMenu {
                 case 3: kasserMenu();
                     break;
                 default:
-                    System.out.println("Ugyldigt valg, prøv igen.");
+                    System.out.println("Ikke en mulighed, prøv igen.");
             }
         }
     }
@@ -40,9 +40,8 @@ public class SvoemmeMenu {
             int valg= TryCatch.indtastTal();
             if (valg == 0) break;
 
-            if (valg==0) break;
             switch (valg){
-                case 1: {
+                case 1:
                     System.out.println("Tast '1' for at oprette en motionist");
                     System.out.println("Tast '2' for at oprette konkurrencesvømmer");
                     valg = TryCatch.indtastTal();
@@ -52,8 +51,15 @@ public class SvoemmeMenu {
                         case 2: CompetitiveSwimmer.opretMedlem();
                         break;
                     }
-                }
-
+                    break;
+                case 2:
+                    // Medlem.aendrMedlem
+                    break;
+                case 3:
+                    // Medlem.sletMedlem
+                    break;
+                default:
+                    System.out.println("Ikke en mulighed, prøv igen.");
             }
         }
 
@@ -69,6 +75,16 @@ public class SvoemmeMenu {
             int valg = TryCatch.indtastTal();
             if (valg == 0) break;
 
+            switch (valg){
+                case 1: // Liste over Holdmedlemmer
+                    break;
+                case 2: // Se resultater
+                    break;
+                case 3: // 5 bedste resultater
+                    break;
+                default:
+                    System.out.println("Ikke en mulighed, prøv igen.");
+            }
         }
     }
 
@@ -82,6 +98,14 @@ public class SvoemmeMenu {
             int valg = TryCatch.indtastTal();
             if (valg == 0) break;
 
+            switch (valg){
+                case 1: //
+                    break;
+                case 2: //
+                    break;
+                default:
+                    System.out.println("Ikke en mulighed, prøv igen.");
+            }
         }
     }
 }
