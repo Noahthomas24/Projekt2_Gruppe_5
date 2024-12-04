@@ -56,20 +56,26 @@ public class Medlem {
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
-    protected void setAktivPassiv(int valgAktivPassiv){
+    public void setAktivPassiv() throws JSONException {
         System.out.println("Vælg brugerID");
-        Medlem.medlemmer.get(TryCatch.indtastTal()+1);
+        Medlem valgtMedlem = Medlem.medlemmer.get(TryCatch.indtastTal() - 1);
         System.out.println("Tryk 1 for at sætte medlem som aktiv");
         System.out.println("Tryk 2 for at sætte medlem som passiv");
-        TryCatch.indtastTal();
-        switch (valgAktivPassiv){
+        int valgAktivPassiv = TryCatch.indtastTal();
+        switch (valgAktivPassiv) {
             case 1:
-
-
+                valgtMedlem.aktivPassiv = "aktiv";
+                valgtMedlem.bestemMedlemsStatus();
+                System.out.println(valgtMedlem);
+                FileHandler.jsonWriter();
+                break;
+            case 2:
+                valgtMedlem.status = Medlem.medlemsStatus.PASSIV;
+                System.out.println(valgtMedlem);
+                FileHandler.jsonWriter();
+                break;
         }
-
     }
-
     protected void bestemMedlemsStatus() {
         if (aktivPassiv.contains("Passiv")) status = medlemsStatus.PASSIV;
         if (alder < 18) status = medlemsStatus.AKTIV_JUNIOR;

@@ -28,7 +28,26 @@ public class SvoemmeMenu {
             }
         }
     }
-
+    public void setAktivPassiv() throws JSONException {
+        System.out.println("Vælg brugerID");
+        Medlem valgtMedlem = Medlem.medlemmer.get(TryCatch.indtastTal() - 1);
+        System.out.println("Tryk 1 for at sætte medlem som aktiv");
+        System.out.println("Tryk 2 for at sætte medlem som passiv");
+        int valgAktivPassiv = TryCatch.indtastTal();
+        switch (valgAktivPassiv) {
+            case 1:
+                valgtMedlem.aktivPassiv = "aktiv";
+                valgtMedlem.bestemMedlemsStatus();
+                System.out.println(valgtMedlem);
+                FileHandler.jsonWriter();
+                break;
+            case 2:
+                valgtMedlem.status = Medlem.medlemsStatus.PASSIV;
+                System.out.println(valgtMedlem);
+                FileHandler.jsonWriter();
+                break;
+        }
+    }
 
     public static void formandMenu() throws JSONException {
         while (true){
@@ -53,6 +72,24 @@ public class SvoemmeMenu {
                     }
                     break;
                 case 2:
+                    System.out.println("Vælg brugerID");
+                    Medlem valgtMedlem = Medlem.medlemmer.get(TryCatch.indtastTal()-1);
+                    System.out.println("Tryk 1 for at sætte medlem som aktiv");
+                    System.out.println("Tryk 2 for at sætte medlem som passiv");
+                    int valgAktivPassiv = TryCatch.indtastTal();
+                    switch (valgAktivPassiv) {
+                        case 1:
+                            valgtMedlem.aktivPassiv = "aktiv";
+                            valgtMedlem.bestemMedlemsStatus();
+                            System.out.println(valgtMedlem);
+                            FileHandler.jsonWriter();
+                            break;
+                        case 2:
+                            valgtMedlem.status = Medlem.medlemsStatus.PASSIV;
+                            System.out.println(valgtMedlem);
+                            FileHandler.jsonWriter();
+                            break;
+                    }
                     // Medlem.aendrMedlem
                     break;
                 case 3:
