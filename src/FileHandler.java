@@ -32,15 +32,15 @@ public class FileHandler {
         }
 
         public void InnitResultater() throws JSONException {
-            Resultat.resultater.add(new Resultat(50, LocalDate.of(2024, 01, 01), "Træning", "Crawl", LocalTime.of(0,29,12,100000000)));
-            Resultat.resultater.add(new Resultat(51, LocalDate.of(2024, 01, 01), "Stævne", "Crawl", LocalTime.of(0,29,40,100000000)));
-            Resultat.resultater.add(new Resultat(52, LocalDate.of(2024, 01, 01), "Stævne", "Brystsvømning", LocalTime.of(0,29,9,100000000)));
-            Resultat.resultater.add(new Resultat(53, LocalDate.of(2024, 01, 01), "Træning", "Brystsvømning", LocalTime.of(0,28,50,100000000)));
-            Resultat.resultater.add(new Resultat(54, LocalDate.of(2024, 01, 01), "Stævne", "Butterfly", LocalTime.of(0,27,30,100000000)));
-            Resultat.resultater.add(new Resultat(50, LocalDate.of(2024, 01, 01), "Stævne", "Butterfly", LocalTime.of(0,24,4,100000000)));
-            Resultat.resultater.add(new Resultat(51, LocalDate.of(2024, 01, 01), "Træning", "Crawl", LocalTime.of(0,27,12,100000000)));
-            Resultat.resultater.add(new Resultat(52, LocalDate.of(2024, 01, 01), "Stævne", "Crawl", LocalTime.of(0,23,40,100000000)));
-            Resultat.resultater.add(new Resultat(53, LocalDate.of(2024, 01, 01), "Stævne", "Brystsvømning", LocalTime.of(0,21,9,100000000)));
+            Resultat.resultater.add(new Resultat(6, LocalDate.of(2024, 01, 01), "Træning", "Crawl", LocalTime.of(0,29,12,100000000)));
+            Resultat.resultater.add(new Resultat(7, LocalDate.of(2024, 01, 01), "Stævne", "Crawl", LocalTime.of(0,29,40,100000000)));
+            Resultat.resultater.add(new Resultat(8, LocalDate.of(2024, 01, 01), "Stævne", "Brystsvømning", LocalTime.of(0,29,9,100000000)));
+            Resultat.resultater.add(new Resultat(9, LocalDate.of(2024, 01, 01), "Træning", "Brystsvømning", LocalTime.of(0,28,50,100000000)));
+            Resultat.resultater.add(new Resultat(10, LocalDate.of(2024, 01, 01), "Stævne", "Butterfly", LocalTime.of(0,27,30,100000000)));
+            Resultat.resultater.add(new Resultat(6, LocalDate.of(2024, 01, 01), "Stævne", "Butterfly", LocalTime.of(0,24,4,100000000)));
+            Resultat.resultater.add(new Resultat(7, LocalDate.of(2024, 01, 01), "Træning", "Crawl", LocalTime.of(0,27,12,100000000)));
+            Resultat.resultater.add(new Resultat(8, LocalDate.of(2024, 01, 01), "Stævne", "Crawl", LocalTime.of(0,23,40,100000000)));
+            Resultat.resultater.add(new Resultat(9, LocalDate.of(2024, 01, 01), "Stævne", "Brystsvømning", LocalTime.of(0,21,9,100000000)));
 
             Resultat.sorterEfterTider();
             jsonWriterResult();

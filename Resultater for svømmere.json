@@ -1,14 +1,5 @@
 [{
-"brugerID":8,
-"resultattid":"00:21:09.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Signe Pedersen",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":33,
+"brugerID":9,
 "resultattid":"00:21:09.100",
 "session":"Stævne",
 "dato":"2024-01-01",
@@ -18,123 +9,24 @@
 },
 {
 "brugerID":8,
-"resultattid":"00:21:09.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Signe Pedersen",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":33,
-"resultattid":"00:21:09.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Safire Storm",
-"disciplin":"Brystsvømning",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":7,
-"resultattid":"00:23:40.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Oliver Nyam",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":32,
 "resultattid":"00:23:40.100",
 "session":"Stævne",
 "dato":"2024-01-01",
 "navn":"Julius Bay",
-"disciplin":"Crawl",
-"hold":"AKTIV_JUNIOR"
-},
-{
-"brugerID":7,
-"resultattid":"00:23:40.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Oliver Nyam",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":32,
-"resultattid":"00:23:40.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Julius Bay",
-"disciplin":"Crawl",
-"hold":"AKTIV_JUNIOR"
-},
-{
-"brugerID":5,
-"resultattid":"00:24:04.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Mr Morsing",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":30,
-"resultattid":"00:24:04.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Mikeal Felpsr",
-"disciplin":"Butterfly",
-"hold":"AKTIV_JUNIOR"
-},
-{
-"brugerID":5,
-"resultattid":"00:24:04.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Mr Morsing",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":30,
-"resultattid":"00:24:04.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Mikeal Felpsr",
-"disciplin":"Butterfly",
-"hold":"AKTIV_JUNIOR"
-},
-{
-"brugerID":6,
-"resultattid":"00:27:12.100",
-"session":"Træning",
-"dato":"2024-01-01",
-"navn":"Thamid Jabril",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":31,
-"resultattid":"00:27:12.100",
-"session":"Træning",
-"dato":"2024-01-01",
-"navn":"Noah Carter",
 "disciplin":"Crawl",
 "hold":"AKTIV_JUNIOR"
 },
 {
 "brugerID":6,
-"resultattid":"00:27:12.100",
-"session":"Træning",
+"resultattid":"00:24:04.100",
+"session":"Stævne",
 "dato":"2024-01-01",
-"navn":"Thamid Jabril",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
+"navn":"Mikeal Felpsr",
+"disciplin":"Butterfly",
+"hold":"AKTIV_JUNIOR"
 },
 {
-"brugerID":31,
+"brugerID":7,
 "resultattid":"00:27:12.100",
 "session":"Træning",
 "dato":"2024-01-01",
@@ -143,16 +35,7 @@
 "hold":"AKTIV_JUNIOR"
 },
 {
-"brugerID":2,
-"resultattid":"00:27:30.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Noah Carter",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":34,
+"brugerID":10,
 "resultattid":"00:27:30.100",
 "session":"Stævne",
 "dato":"2024-01-01",
@@ -161,34 +44,7 @@
 "hold":"AKTIV_SENIOR"
 },
 {
-"brugerID":2,
-"resultattid":"00:27:30.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Noah Carter",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":34,
-"resultattid":"00:27:30.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Mr Morsing",
-"disciplin":"Butterfly",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":4,
-"resultattid":"00:28:50.100",
-"session":"Træning",
-"dato":"2024-01-01",
-"navn":"Safire Storm",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":33,
+"brugerID":9,
 "resultattid":"00:28:50.100",
 "session":"Træning",
 "dato":"2024-01-01",
@@ -197,34 +53,7 @@
 "hold":"AKTIV_SENIOR"
 },
 {
-"brugerID":4,
-"resultattid":"00:28:50.100",
-"session":"Træning",
-"dato":"2024-01-01",
-"navn":"Safire Storm",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":33,
-"resultattid":"00:28:50.100",
-"session":"Træning",
-"dato":"2024-01-01",
-"navn":"Safire Storm",
-"disciplin":"Brystsvømning",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":3,
-"resultattid":"00:29:09.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"julius Bay",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_PENSIO"
-},
-{
-"brugerID":32,
+"brugerID":8,
 "resultattid":"00:29:09.100",
 "session":"Stævne",
 "dato":"2024-01-01",
@@ -233,34 +62,7 @@
 "hold":"AKTIV_JUNIOR"
 },
 {
-"brugerID":3,
-"resultattid":"00:29:09.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"julius Bay",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_PENSIO"
-},
-{
-"brugerID":32,
-"resultattid":"00:29:09.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Julius Bay",
-"disciplin":"Brystsvømning",
-"hold":"AKTIV_JUNIOR"
-},
-{
-"brugerID":1,
-"resultattid":"00:29:12.100",
-"session":"Træning",
-"dato":"2024-01-01",
-"navn":"Mikeal Felpsr",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":30,
+"brugerID":6,
 "resultattid":"00:29:12.100",
 "session":"Træning",
 "dato":"2024-01-01",
@@ -269,52 +71,7 @@
 "hold":"AKTIV_JUNIOR"
 },
 {
-"brugerID":1,
-"resultattid":"00:29:12.100",
-"session":"Træning",
-"dato":"2024-01-01",
-"navn":"Mikeal Felpsr",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":30,
-"resultattid":"00:29:12.100",
-"session":"Træning",
-"dato":"2024-01-01",
-"navn":"Mikeal Felpsr",
-"disciplin":"Crawl",
-"hold":"AKTIV_JUNIOR"
-},
-{
-"brugerID":2,
-"resultattid":"00:29:40.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Noah Carter",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":31,
-"resultattid":"00:29:40.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Noah Carter",
-"disciplin":"Crawl",
-"hold":"AKTIV_JUNIOR"
-},
-{
-"brugerID":2,
-"resultattid":"00:29:40.100",
-"session":"Stævne",
-"dato":"2024-01-01",
-"navn":"Noah Carter",
-"disciplin":"Rygcrawl",
-"hold":"AKTIV_SENIOR"
-},
-{
-"brugerID":31,
+"brugerID":7,
 "resultattid":"00:29:40.100",
 "session":"Stævne",
 "dato":"2024-01-01",

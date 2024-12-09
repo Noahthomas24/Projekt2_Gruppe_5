@@ -3,12 +3,13 @@ import org.json.JSONException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Medlem {
     protected int brugerID;
     static Scanner scanner = new Scanner(System.in);
-    public static ArrayList<Medlem> medlemmer = new ArrayList<>();
+    public static List<Medlem> medlemmer = new ArrayList<>();
     protected final String navn;
     protected final int alder;
     protected LocalDate dateOfBirth;
