@@ -6,7 +6,6 @@ import java.util.List;
 
 public class CompetitiveSwimmer extends Medlem{
     private List<String> discipliner;
-    protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR}
     String aktivitetsNiveau = "Konkurrencesvømmer";
 
     public CompetitiveSwimmer(String navn, LocalDate dateOfBirth, String betalingsStatus) {
@@ -17,6 +16,7 @@ public class CompetitiveSwimmer extends Medlem{
     protected void bestemMedlemsStatus() {
         if (alder < 18) status = Medlem.medlemsStatus.AKTIV_JUNIOR;
         if (alder >= 18) status = Medlem.medlemsStatus.AKTIV_SENIOR;
+        if (alder >= 60) status = Medlem.medlemsStatus.AKTIV_SENIOR;
     }
 
     public static void opretMedlem() throws JSONException {

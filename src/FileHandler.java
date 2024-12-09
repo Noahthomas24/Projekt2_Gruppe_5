@@ -15,21 +15,38 @@ public class FileHandler {
         static JSONArray jsonArray = new JSONArray();
 
         public void InnitMedlemmer() throws JSONException {
-            Medlem.medlemmer.add(new Medlem("Mikeal Felpsr", LocalDate.of(1980, 12, 31), "Aktiv", "Kredit"));
-            Medlem.medlemmer.add(new Medlem("Noah Carter", LocalDate.of(2002, 10, 28), "Aktiv", "Kredit"));
-            Medlem.medlemmer.add(new Medlem("Julius Bay", LocalDate.of(1910, 1, 21), "Aktiv", "Kredit"));
-            Medlem.medlemmer.add(new Medlem("Safire Storm", LocalDate.of(1983, 2, 18), "Aktiv", "Kredit"));
-            Medlem.medlemmer.add(new Medlem("Mr Morsing", LocalDate.of(1965, 12, 16), "Passiv", "Kredit"));
+            Medlem.medlemmer.add(new CompetitiveSwimmer("Mikeal Felpsr", LocalDate.of(2006, 12, 31), "Kredit"));
+            Medlem.medlemmer.add(new CompetitiveSwimmer("Noah Carter", LocalDate.of(2008, 10, 28) , "Kredit"));
+            Medlem.medlemmer.add(new CompetitiveSwimmer("Julius Bay", LocalDate.of(2010, 1, 21), "Kredit"));
+            Medlem.medlemmer.add(new CompetitiveSwimmer("Safire Storm", LocalDate.of(1983, 2, 18), "Kredit"));
+            Medlem.medlemmer.add(new CompetitiveSwimmer("Mr Morsing", LocalDate.of(1965, 12, 16), "Kredit"));
 
 
             jsonWriter();
         }
 
         public void InnitResultater() throws JSONException {
-            Resultat.resultater.add(new Resultat(1, "Træning", "Rygcrawl", LocalTime.of(0,29,12,100000000)));
-            Resultat.resultater.add(new Resultat(2, "Stævne", "Rygcrawl", LocalTime.of(0,29,40,100000000)));
-            Resultat.resultater.add(new Resultat(3, "Stævne", "Rygcrawl", LocalTime.of(0,29,9,100000000)));
+            Resultat.resultater.add(new Resultat(1, LocalDate.of(2024, 01, 01), "Træning", "Rygcrawl", LocalTime.of(0,29,12,100000000)));
+            Resultat.resultater.add(new Resultat(2, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,29,40,100000000)));
+            Resultat.resultater.add(new Resultat(3, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,29,9,100000000)));
+            Resultat.resultater.add(new Resultat(4, LocalDate.of(2024, 01, 01), "Træning", "Rygcrawl", LocalTime.of(0,28,50,100000000)));
+            Resultat.resultater.add(new Resultat(2, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,27,30,100000000)));
+            Resultat.resultater.add(new Resultat(5, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,24,4,100000000)));
+            Resultat.resultater.add(new Resultat(6, LocalDate.of(2024, 01, 01), "Træning", "Rygcrawl", LocalTime.of(0,27,12,100000000)));
+            Resultat.resultater.add(new Resultat(7, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,23,40,100000000)));
+            Resultat.resultater.add(new Resultat(8, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,21,9,100000000)));
 
+            Resultat.resultater.add(new Resultat(30, LocalDate.of(2024, 01, 01), "Træning", "Crawl", LocalTime.of(0,29,12,100000000)));
+            Resultat.resultater.add(new Resultat(31, LocalDate.of(2024, 01, 01), "Stævne", "Crawl", LocalTime.of(0,29,40,100000000)));
+            Resultat.resultater.add(new Resultat(32, LocalDate.of(2024, 01, 01), "Stævne", "Brystsvømning", LocalTime.of(0,29,9,100000000)));
+            Resultat.resultater.add(new Resultat(33, LocalDate.of(2024, 01, 01), "Træning", "Brystsvømning", LocalTime.of(0,28,50,100000000)));
+            Resultat.resultater.add(new Resultat(34, LocalDate.of(2024, 01, 01), "Stævne", "Butterfly", LocalTime.of(0,27,30,100000000)));
+            Resultat.resultater.add(new Resultat(30, LocalDate.of(2024, 01, 01), "Stævne", "Butterfly", LocalTime.of(0,24,4,100000000)));
+            Resultat.resultater.add(new Resultat(31, LocalDate.of(2024, 01, 01), "Træning", "Crawl", LocalTime.of(0,27,12,100000000)));
+            Resultat.resultater.add(new Resultat(32, LocalDate.of(2024, 01, 01), "Stævne", "Crawl", LocalTime.of(0,23,40,100000000)));
+            Resultat.resultater.add(new Resultat(33, LocalDate.of(2024, 01, 01), "Stævne", "Brystsvømning", LocalTime.of(0,21,9,100000000)));
+
+            Resultat.sorterEfterTider();
             jsonWriterResult();
         }
 
@@ -110,9 +127,9 @@ public class FileHandler {
                     //det her stykke kode omdanner den ovenstående dateOfBirthString til en Localdate der kan bruges.
                     LocalDate dateOfBirth = LocalDate.parse(dateOfBirthString, DateTimeFormatter.ISO_LOCAL_DATE);
 
-                    System.out.println("Navn: " + navn + ", Fødselsdato: " + dateOfBirth +
+                    /*System.out.println("Navn: " + navn + ", Fødselsdato: " + dateOfBirth +
                             ", Medlemsstatus: " + medlemsstatus + ", Saldo: " + saldo);
-
+                    */
                     Medlem medlem = new Medlem(navn, dateOfBirth, medlemsstatus, saldo);
                     Medlem.medlemmer.add(medlem);
 
@@ -140,6 +157,8 @@ public class FileHandler {
                 objItem1.put("disciplin", Resultat.resultater.get(i).getDisciplin().toString());
                 objItem1.put("resultattid", Resultat.resultater.get(i).getResTid().toString());
                 objItem1.put("session", Resultat.resultater.get(i).getSession().toString());
+                objItem1.put("dato", Resultat.resultater.get(i).getDato().toString());
+                objItem1.put("hold", Resultat.resultater.get(i).medlem.getMedlemsStatus()).toString();
 
                 // Tilføjer objektet direkte til array
                 jsonArray.put(objItem1);
@@ -177,13 +196,17 @@ public class FileHandler {
                     String disciplin = jsonObject.getString("disciplin");
                     String resultattidstring = jsonObject.getString("resultattid");
                     String session = jsonObject.getString("session");
+                    String dato = jsonObject.getString("dato");
+                    String hold = jsonObject.getString("hold");
+
+                    LocalDate resultatDato = LocalDate.parse(dato, DateTimeFormatter.ISO_LOCAL_DATE);
 
                     LocalTime resultattid = LocalTime.parse(resultattidstring);
 
-                    System.out.println("Navn: " + navn + ", Disciplin: " + disciplin +
-                            ", Resultattid: " + resultattid + ", Session: " + session);
+                    /*System.out.println("Navn: " + navn + ", Disciplin: " + disciplin +
+                            ", Resultattid: " + resultattid + ", Session: " + session);*/
 
-                    Resultat resultat = new Resultat(iD, session, disciplin, resultattid);
+                    Resultat resultat = new Resultat(iD, resultatDato, session, disciplin, resultattid);
                     Resultat.resultater.add(resultat);
 
                 }

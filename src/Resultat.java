@@ -1,6 +1,7 @@
 import org.json.JSONException;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -8,27 +9,37 @@ import java.util.*;
 public class Resultat implements Comparable<Resultat>{
     static Scanner keyboard = new Scanner(System.in);
     static List<Resultat> resultater = new ArrayList<>();
-    String navn;
+    int brugerID;
     String disciplin;
     LocalTime resTid;
+    LocalDate dato;
     Medlem medlem;
     String session; //Træning eller stævne
     public DateTimeFormatter format = DateTimeFormatter.ofPattern("mm:ss:SS");
 
-    Resultat (int brugerID, String session, String disciplin, LocalTime resTid){
+    Resultat (int brugerID, LocalDate dato, String session, String disciplin, LocalTime resTid){
         checkID(brugerID);
+        this.brugerID = brugerID;
         this.disciplin = disciplin;
         this.resTid = resTid;
         this.session = session;
+        this.dato = dato;
     }
 
     public boolean checkID(int brugerID) {
         for (Medlem m : Medlem.medlemmer) {
             if (m.brugerID == brugerID) {
-                this.medlem = m;
-                return true;
+                if (m instanceof CompetitiveSwimmer){
+                    this.medlem = m;
+                    return true;
+                }
+                else {
+                    System.out.println("Resultater kan kun oprettes for konkurrencesvømmere");
+                    return false;
+                }
             }
         }
+
         System.out.println("Vedkommende er ikke medlem hos os.");
         return false;
     }
@@ -37,7 +48,7 @@ public class Resultat implements Comparable<Resultat>{
         if (medlem == null) {
             return "Ugyldigt resultat (medlem ikke fundet)";
         }
-        return medlem.navn+": "+resTid.format(format);
+        return medlem.navn+" - "+getDisciplin()+" - " + getSession() + " - " +resTid.format(format);
     }
 
     public int compareTo(Resultat other){
@@ -54,6 +65,7 @@ public class Resultat implements Comparable<Resultat>{
             return;
         }
 
+        dato = TryCatch.indtastDato();
 
         System.out.println("Hvilken disciplin?");
         String disciplin = keyboard.nextLine();
@@ -64,13 +76,15 @@ public class Resultat implements Comparable<Resultat>{
         switch (sessionsForm){
             case 1: session = "Træningstid";
                 break;
-            case 2: session = "Stævne";
+            case 2:
+                System.out.println("Hvilket stævne?");
+                session = Medlem.scanner.nextLine();
                 break;
         }
 
 
         LocalTime resTid = verificerTid();
-        FileHandler.saveResult(new Resultat(iD, session, disciplin, resTid));
+        FileHandler.saveResult(new Resultat(iD, dato, session, disciplin, resTid));
     }
 
     public LocalTime verificerTid(){
@@ -91,9 +105,102 @@ public class Resultat implements Comparable<Resultat>{
         return tid;
     }
 
+    public static void sorterEfterTider(){
+        Collections.sort(resultater, new Comparator<Resultat>() {
+            @Override
+            public int compare(Resultat o1, Resultat o2) {
+                return o1.getResTid().compareTo(o2.getResTid());
+            }
+        });
+    }
+
+    private static List<Resultat> visResultaterForSpecifiktHold(){
+        List<Resultat> holdResultater = new ArrayList<>();
+
+        System.out.println("Tast 1 for at se resultater for JUNIOR");
+        System.out.println("Tast 2 for at se resultater for SENIOR");
+        int valg = TryCatch.indtastTal();
+        switch (valg){
+            case 1:
+                for (Resultat r : resultater){
+                    if (r.getDisciplin().contains("JUNIOR")) holdResultater.add(r);
+                }
+                break;
+
+            case 2:
+                for (Resultat r : resultater){
+                    if (r.getDisciplin().contains("SENIOR")) holdResultater.add(r);
+                }
+                break;
+        }
+
+        return holdResultater;
+    }
+
+    private static List<Resultat> visResultaterForSpecifikDisciplin(){
+        List<Resultat> disciplinResultater = visResultaterForSpecifiktHold();
+
+        System.out.println("Hvilken disciplin ønsker du at se resultater for?");
+        System.out.println("Tast 1 for 'Brystsvømning'");
+        System.out.println("Tast 2 for 'Crawl'");
+        System.out.println("Tast 3 for 'Butterfly'");
+        System.out.println("Tast 4 for 'Rygcrawl'");
+        int valgtDisciplin = TryCatch.indtastTal();
+        switch (valgtDisciplin){
+            case 1:
+                for (Resultat r : resultater){
+                    if (r.getDisciplin().equalsIgnoreCase("Brystsvømning")) disciplinResultater.add(r);
+                }
+                break;
+
+            case 2:
+                for (Resultat r : resultater){
+                    if (r.getDisciplin().equalsIgnoreCase("Crawl")) disciplinResultater.add(r);
+                }
+                break;
+
+            case 3:
+                for (Resultat r : resultater){
+                    if (r.getDisciplin().equalsIgnoreCase("Butterfly")) disciplinResultater.add(r);
+                }
+                break;
+
+            case 4:
+                for (Resultat r : resultater){
+                    if (r.getDisciplin().equalsIgnoreCase("Rygcrawl")) disciplinResultater.add(r);
+                }
+                break;
+        }
+
+        return disciplinResultater;
+    }
+
+    public static void visTop5Resultater(){
+        List<Resultat> topFem = new ArrayList<>();
+        List<Resultat> specifikDisciplin = visResultaterForSpecifikDisciplin();
+
+        for (Resultat r : specifikDisciplin){
+            if (!topFem.contains(r.getBrugerID())){
+                topFem.add(r);
+            }
+
+            if (topFem.size() == 5) { break; }
+        }
+
+        for (Resultat r : topFem){
+            System.out.println(r);
+        }
+    }
+
     public String getDisciplin(){ return disciplin;}
 
     public LocalTime getResTid(){ return resTid;}
 
     public String getSession(){ return session; }
+
+    public LocalDate getDato() { return dato; }
+
+    public int getBrugerID() { return brugerID; }
+
+
 }
