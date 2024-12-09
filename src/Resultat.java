@@ -105,6 +105,7 @@ public class Resultat implements Comparable<Resultat>{
         return tid;
     }
 
+    // Sorterer resultaterne efter laveste tid. Bliver kaldt ved oprettelse af FileHandler objekt.
     public static void sorterEfterTider(){
         Collections.sort(resultater, new Comparator<Resultat>() {
             @Override
@@ -114,6 +115,7 @@ public class Resultat implements Comparable<Resultat>{
         });
     }
 
+    // Forkorter resultatliste til liste for junior eller senior
     private static List<Resultat> visResultaterForSpecifiktHold(){
         List<Resultat> holdResultater = new ArrayList<>();
 
@@ -137,6 +139,7 @@ public class Resultat implements Comparable<Resultat>{
         return holdResultater;
     }
 
+    // Forkorter resultatliste til den specifikke disciplin
     private static List<Resultat> visResultaterForSpecifikDisciplin(){
         List<Resultat> disciplinResultater = visResultaterForSpecifiktHold();
 
@@ -175,6 +178,7 @@ public class Resultat implements Comparable<Resultat>{
         return disciplinResultater;
     }
 
+    // Viser de fem bedste resultater for det givne hold indenfor den givne disciplin
     public static void visTop5Resultater(){
         List<Resultat> topFem = new ArrayList<>();
         List<Resultat> specifikDisciplin = visResultaterForSpecifikDisciplin();
