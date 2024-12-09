@@ -26,16 +26,6 @@ public class FileHandler {
         }
 
         public void InnitResultater() throws JSONException {
-            Resultat.resultater.add(new Resultat(1, LocalDate.of(2024, 01, 01), "Træning", "Rygcrawl", LocalTime.of(0,29,12,100000000)));
-            Resultat.resultater.add(new Resultat(2, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,29,40,100000000)));
-            Resultat.resultater.add(new Resultat(3, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,29,9,100000000)));
-            Resultat.resultater.add(new Resultat(4, LocalDate.of(2024, 01, 01), "Træning", "Rygcrawl", LocalTime.of(0,28,50,100000000)));
-            Resultat.resultater.add(new Resultat(2, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,27,30,100000000)));
-            Resultat.resultater.add(new Resultat(5, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,24,4,100000000)));
-            Resultat.resultater.add(new Resultat(6, LocalDate.of(2024, 01, 01), "Træning", "Rygcrawl", LocalTime.of(0,27,12,100000000)));
-            Resultat.resultater.add(new Resultat(7, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,23,40,100000000)));
-            Resultat.resultater.add(new Resultat(8, LocalDate.of(2024, 01, 01), "Stævne", "Rygcrawl", LocalTime.of(0,21,9,100000000)));
-
             Resultat.resultater.add(new Resultat(30, LocalDate.of(2024, 01, 01), "Træning", "Crawl", LocalTime.of(0,29,12,100000000)));
             Resultat.resultater.add(new Resultat(31, LocalDate.of(2024, 01, 01), "Stævne", "Crawl", LocalTime.of(0,29,40,100000000)));
             Resultat.resultater.add(new Resultat(32, LocalDate.of(2024, 01, 01), "Stævne", "Brystsvømning", LocalTime.of(0,29,9,100000000)));
