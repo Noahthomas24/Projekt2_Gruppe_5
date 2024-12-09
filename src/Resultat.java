@@ -28,15 +28,9 @@ public class Resultat implements Comparable<Resultat>{
 
     public boolean checkID(int brugerID) {
         for (Medlem m : Medlem.medlemmer) {
-            if (m.brugerID == brugerID) {
-                if (m instanceof CompetitiveSwimmer){
-                    this.medlem = m;
-                    return true;
-                }
-                else {
-                    System.out.println("Resultater kan kun oprettes for konkurrencesvømmere");
-                    return false;
-                }
+            if (m.getBrugerID()==brugerID){
+                this.medlem = m;
+                return true;
             }
         }
 
