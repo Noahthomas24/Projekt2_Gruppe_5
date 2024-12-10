@@ -12,9 +12,9 @@ public class Resultat implements Comparable<Resultat>{
     int brugerID;
     String disciplin;
     LocalTime resTid;
-    LocalDate dato;
+    static LocalDate dato;
     Medlem medlem;
-    String session; //Træning eller stævne
+    static String session; //Træning eller stævne
     public DateTimeFormatter format = DateTimeFormatter.ofPattern("mm:ss:SS");
 
     Resultat (int brugerID, LocalDate dato, String session, String disciplin, LocalTime resTid){
@@ -26,7 +26,7 @@ public class Resultat implements Comparable<Resultat>{
         this.dato = dato;
     }
 
-    public boolean checkID(int brugerID) {
+    public static boolean checkID(int brugerID) {
         for (Medlem m : Medlem.medlemmer) {
             if (m.getBrugerID()==brugerID){
                 this.medlem = m;
@@ -49,7 +49,7 @@ public class Resultat implements Comparable<Resultat>{
         return this.resTid.compareTo(other.resTid);
     }
 
-    public void addResultat() throws JSONException {
+    public static void addResultat() throws JSONException {
         System.out.println("Hvad er svømmerens bruger-ID?");
         int iD = keyboard.nextInt();
         System.out.println();
@@ -81,7 +81,7 @@ public class Resultat implements Comparable<Resultat>{
         FileHandler.saveResult(new Resultat(iD, dato, session, disciplin, resTid));
     }
 
-    public LocalTime verificerTid(){
+    public static LocalTime verificerTid(){
         LocalTime tid=null;
         boolean korrektTid = false;
 
@@ -110,7 +110,7 @@ public class Resultat implements Comparable<Resultat>{
     }
 
     // Forkorter resultatliste til liste for junior eller senior
-    private static List<Resultat> visResultaterForSpecifiktHold(){
+    public static List<Resultat> visResultaterForSpecifiktHold(){
         List<Resultat> holdResultater = new ArrayList<>();
 
         System.out.println("Tast 1 for at se resultater for JUNIOR");

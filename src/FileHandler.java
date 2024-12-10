@@ -62,7 +62,7 @@ public class FileHandler {
             jsonWriter();
         }
 
-        public void getRestanceLise() {
+        public static void getRestanceLise() {
             System.out.println("Følgende medlemmer er i gæld: ");
             System.out.println();
             for (Medlem m : Medlem.medlemmer) {

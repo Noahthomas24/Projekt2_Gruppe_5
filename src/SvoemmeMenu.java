@@ -72,7 +72,6 @@ public class SvoemmeMenu {
                             FileHandler.jsonWriter();
                             break;
                     }
-                    // Medlem.aendrMedlem
                     break;
                 case 3:
                     // Medlem.sletMedlem
@@ -107,19 +106,19 @@ public class SvoemmeMenu {
     public static void traenerMenu() throws JSONException {
         while (true) {
             System.out.println("Du har nu følgende muligheder");
-            System.out.println("Tast '1' for at ");
-            System.out.println("Tast '2' for at ");
-            System.out.println("Tast '3' for at ");
+            System.out.println("Tast '1' for at tilføje resultat");
+            System.out.println("Tast '2' for at se alle resultater");
+            System.out.println("Tast '3' for at se top 5");
             System.out.println("Tast '0' for at gå til forrige side");
             int valg = TryCatch.indtastTal();
             if (valg == 0) break;
 
             switch (valg){
-                case 1: // Liste over Holdmedlemmer
+                case 1: Resultat.addResultat();
                     break;
-                case 2: // Se resultater
+                case 2: Resultat.visResultaterForSpecifiktHold();
                     break;
-                case 3: // 5 bedste resultater
+                case 3: Resultat.visTop5Resultater();
                     break;
                 case 4:
                     break;
@@ -133,17 +132,16 @@ public class SvoemmeMenu {
     public static void kasserMenu() {
         while (true) {
             System.out.println("Du har nu følgende muligheder");
-            System.out.println("Tast '1' for at ");
-            System.out.println("Tast '2' for at ");
-            System.out.println("Tast '3' for at ");
+            System.out.println("Tast '1' for at se en liste over alle medlemmer.");
+            System.out.println("Tast '2' for at se en liste over medlemmer i restance.");
             System.out.println("Tast '0' for at gå til forrige side");
             int valg = TryCatch.indtastTal();
             if (valg == 0) break;
 
             switch (valg){
-                case 1: //
+                case 1:
                     break;
-                case 2: //
+                case 2: FileHandler.getRestanceLise();
                     break;
                 default:
                     System.out.println("Ikke en mulighed, prøv igen.");
