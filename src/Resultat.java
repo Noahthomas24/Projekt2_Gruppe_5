@@ -13,7 +13,7 @@ public class Resultat implements Comparable<Resultat>{
     String disciplin;
     LocalTime resTid;
     static LocalDate dato;
-    Medlem medlem;
+    static Medlem medlem;
     static String session; //Træning eller stævne
     public DateTimeFormatter format = DateTimeFormatter.ofPattern("mm:ss:SS");
 
@@ -26,11 +26,14 @@ public class Resultat implements Comparable<Resultat>{
         this.dato = dato;
     }
 
-    public static boolean checkID(int brugerID) {
+    private static boolean checkID(int brugerID) {
         for (Medlem m : Medlem.medlemmer) {
-            if (m.getBrugerID()==brugerID){
-                this.medlem = m;
+            if (m.getBrugerID()==brugerID && m instanceof CompetitiveSwimmer){
+                medlem = m;
                 return true;
+            }
+            else {
+                System.out.println("Resultater kan kun registreres for konkurrencesvømmere.");
             }
         }
 
