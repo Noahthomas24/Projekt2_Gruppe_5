@@ -8,38 +8,38 @@
 "hold":"AKTIV_SENIOR"
 },
 {
-"brugerID":9,
+"brugerID":8,
 "resultattid":"00:23:40.100",
 "session":"Stævne",
 "dato":"2024-01-01",
-"navn":"Safire Storm",
+"navn":"Julius Bay",
 "disciplin":"Crawl",
-"hold":"AKTIV_SENIOR"
+"hold":"AKTIV_JUNIOR"
 },
 {
-"brugerID":9,
+"brugerID":6,
 "resultattid":"00:24:04.100",
 "session":"Stævne",
 "dato":"2024-01-01",
-"navn":"Safire Storm",
+"navn":"Mikeal Felpsr",
 "disciplin":"Butterfly",
-"hold":"AKTIV_SENIOR"
+"hold":"AKTIV_JUNIOR"
 },
 {
-"brugerID":9,
+"brugerID":7,
 "resultattid":"00:27:12.100",
 "session":"Stævne",
 "dato":"2024-01-01",
-"navn":"Safire Storm",
+"navn":"Noah Carter",
 "disciplin":"Crawl",
-"hold":"AKTIV_SENIOR"
+"hold":"AKTIV_JUNIOR"
 },
 {
-"brugerID":9,
+"brugerID":10,
 "resultattid":"00:27:30.100",
 "session":"Stævne",
 "dato":"2024-01-01",
-"navn":"Safire Storm",
+"navn":"Mr Morsing",
 "disciplin":"Butterfly",
 "hold":"AKTIV_SENIOR"
 },
@@ -53,29 +53,29 @@
 "hold":"AKTIV_SENIOR"
 },
 {
-"brugerID":9,
+"brugerID":8,
 "resultattid":"00:29:09.100",
 "session":"Stævne",
 "dato":"2024-01-01",
-"navn":"Safire Storm",
+"navn":"Julius Bay",
 "disciplin":"Brystsvømning",
-"hold":"AKTIV_SENIOR"
+"hold":"AKTIV_JUNIOR"
 },
 {
-"brugerID":9,
+"brugerID":6,
 "resultattid":"00:29:12.100",
 "session":"Stævne",
 "dato":"2024-01-01",
-"navn":"Safire Storm",
+"navn":"Mikeal Felpsr",
 "disciplin":"Crawl",
-"hold":"AKTIV_SENIOR"
+"hold":"AKTIV_JUNIOR"
 },
 {
-"brugerID":9,
+"brugerID":7,
 "resultattid":"00:29:40.100",
 "session":"Stævne",
 "dato":"2024-01-01",
-"navn":"Safire Storm",
+"navn":"Noah Carter",
 "disciplin":"Crawl",
-"hold":"AKTIV_SENIOR"
+"hold":"AKTIV_JUNIOR"
 }]

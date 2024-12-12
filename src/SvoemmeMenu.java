@@ -140,7 +140,7 @@ public class SvoemmeMenu {
             System.out.println("Du har nu følgende muligheder");
             System.out.println("Tast '1' for at se en liste over alle medlemmer.");
             System.out.println("Tast '2' for at se en liste over medlemmer i restance.");
-            System.out.println("Tast '3' for at se en enkelt brugers betalingsstatus");
+            System.out.println("Tast '3' for at se en enkelt brugers restance");
             System.out.println("Tast '0' for at gå til forrige side");
             int valg = TryCatch.indtastTal();
             if (valg == 0) break;
