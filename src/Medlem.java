@@ -141,7 +141,7 @@ public class Medlem {
     }
 
     public String toString(){
-        return navn + " " + alder +" år - " +status;
+        return brugerID+" "+navn + " " + alder +" år - " +status;
     }
 
     public static void main(String[] args) {
