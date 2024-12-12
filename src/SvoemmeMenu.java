@@ -36,8 +36,8 @@ public class SvoemmeMenu {
         while (true){
             System.out.println("Du har nu følgende muligheder");
             System.out.println("Tast '1' for at oprette et medlem");
-            System.out.println("Tast '2' for at ændre medlemsstatus");
-            System.out.println("Tast '3' for at slette et medlemskab");
+            System.out.println("Tast '2' for at slette et medlemskab");
+            System.out.println("Tast '3' for at ændre medlemsstatus");
             System.out.println("Tast '4' for at ændre konkurrencestatus");
             System.out.println("Tast '0' for at gå til forrige side");
             int valg= TryCatch.indtastTal();
@@ -57,6 +57,10 @@ public class SvoemmeMenu {
                     break;
                 case 2:
                     System.out.println("Vælg brugerID");
+                    int brugerID = TryCatch.indtastTal();
+                    FileHandler.deleteMedlem(brugerID);
+                case 3:
+                    System.out.println("Vælg brugerID");
                     Medlem valgtMedlem = Medlem.medlemmer.get(TryCatch.indtastTal()-1);
                     System.out.println("Tryk 1 for at sætte medlem som aktiv");
                     System.out.println("Tryk 2 for at sætte medlem som passiv");
@@ -74,9 +78,6 @@ public class SvoemmeMenu {
                             FileHandler.jsonWriter();
                             break;
                     }
-                    break;
-                case 3:
-                    //FileHandler.
                     break;
                 case 4:
                     // Set motionist eller konkurrencesvømmer

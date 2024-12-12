@@ -7,14 +7,13 @@ import java.util.List;
 public class CompetitiveSwimmer extends Medlem {
     // Liste til at gemme konkurrencesvømmerens discipliner
     private List<String> discipliner;
-
-    // Fast aktivitetsniveau for konkurrencesvømmere
-    String aktivitetsNiveau = "Konkurrencesvømmer";
+    String aktivitetsniveau;
 
     // Konstruktør for en konkurrencesvømmer
     public CompetitiveSwimmer(String navn, LocalDate dateOfBirth, String betalingsStatus) {
         super(navn, dateOfBirth, "Aktiv", betalingsStatus);
         this.discipliner = new ArrayList<>();
+        this.aktivitetsNiveau = "Konkurrencesvømmer";
     }
 
     // Bestemmer medlemmets status baseret på alder
@@ -53,7 +52,7 @@ public class CompetitiveSwimmer extends Medlem {
         int brugerID = scanner.nextInt();
         scanner.nextLine();
         for (Medlem m : Medlem.medlemmer) {
-            if (Medlem.medlemmer.get(brugerID-1) instanceof CompetitiveSwimmer c){
+            if (m.brugerID == brugerID && m instanceof CompetitiveSwimmer c){
                 System.out.println("Hvilken disciplin ønsker du at tilføje til svømmeren?");
                 String disciplin = scanner.nextLine();
                 if (!c.discipliner.contains(disciplin)) {
@@ -74,9 +73,10 @@ public class CompetitiveSwimmer extends Medlem {
     // Fjerner en disciplin fra svømmerens disciplinliste
     public static void removeDisciplin() {
         System.out.println("Indtast bruger-ID på det medlem, du ønsker at fjerne en disciplin fra.");
-        String navn = scanner.nextLine();
+        int brugerID = TryCatch.indtastTal();
+        scanner.nextLine();
         for (Medlem m : Medlem.medlemmer) {
-            if (m.navn == navn && m instanceof CompetitiveSwimmer c) {
+            if (m.brugerID == brugerID && m instanceof CompetitiveSwimmer c) {
                     System.out.println("Hvilken disciplin ønsker du at tilføje til svømmeren?");
                     String disciplin = scanner.nextLine();
                     c.discipliner.add(disciplin);
