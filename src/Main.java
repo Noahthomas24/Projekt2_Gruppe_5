@@ -8,7 +8,7 @@ public class Main {
         fileHandler.jsonWriter();
 
         SvoemmeMenu s = new SvoemmeMenu();
-        s.formandMenu();
+        s.programMenu();
 
     }
 }

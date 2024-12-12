@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class SvoemmeMenu {
     static Scanner scanner = new Scanner(System.in);
-    public static void main(String[] args) throws JSONException {
+
+    public void programMenu() throws JSONException {
         while (true){
             System.out.println("Velkommen til Svømmeklubben Delfinen!");
             System.out.println("Vælg bruger:");
@@ -30,7 +31,7 @@ public class SvoemmeMenu {
     }
 
 
-    public static void formandMenu() throws JSONException {
+    private static void formandMenu() throws JSONException {
         while (true){
             System.out.println("Du har nu følgende muligheder");
             System.out.println("Tast '1' for at oprette et medlem");
@@ -103,7 +104,7 @@ public class SvoemmeMenu {
 
     }
 
-    public static void traenerMenu() throws JSONException {
+    private static void traenerMenu() throws JSONException {
         while (true) {
             System.out.println("Du har nu følgende muligheder");
             System.out.println("Tast '1' for at tilføje resultat");
@@ -129,7 +130,7 @@ public class SvoemmeMenu {
         }
     }
 
-    public static void kasserMenu() {
+    private static void kasserMenu() {
         while (true) {
             System.out.println("Du har nu følgende muligheder");
             System.out.println("Tast '1' for at se en liste over alle medlemmer.");

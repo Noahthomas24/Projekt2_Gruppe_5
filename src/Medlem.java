@@ -35,14 +35,34 @@ public class Medlem {
     }
 
     public static void opretMedlem() throws JSONException {
-        System.out.println("Nu opretter vi et medlem bum");
+        System.out.println("Her kan du oprette et nyt medlem.");
         System.out.println("Indtast navn");
         String navn = scanner.nextLine();
         LocalDate dateOfBirth = TryCatch.indtastDato();
+
         System.out.println("Er det et aktivt eller passivt medlem");
-        String aktivPassiv = scanner.nextLine();
-        System.out.println("Betalt eller kredit?");
-        String betalingsStatus = scanner.nextLine();
+        String aktivPassiv;
+        while (true) {
+            aktivPassiv = scanner.nextLine();
+            if (aktivPassiv.equalsIgnoreCase("Aktiv") || aktivPassiv.equalsIgnoreCase("Passiv")){
+                break;
+            }
+            else {
+                System.out.println("Ugyldigt input, det skal være aktiv eller passiv");
+            }
+        }
+
+        System.out.println("Har de betalt for medlemsskabet, eller er det på kredit?");
+        String betalingsStatus;
+        while (true) {
+            betalingsStatus = scanner.nextLine();
+            if (betalingsStatus.equalsIgnoreCase("Kredit") || betalingsStatus.equalsIgnoreCase("Betalt")){
+                break;
+            }
+            else {
+                System.out.println("Ugyldigt input, det skal være betalt eller kredit");
+            }
+        }
         FileHandler.saveMedlem(new Medlem(navn, dateOfBirth, aktivPassiv, betalingsStatus));
     }
 
