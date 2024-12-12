@@ -73,9 +73,10 @@ public class CompetitiveSwimmer extends Medlem {
     // Fjerner en disciplin fra svømmerens disciplinliste
     public static void removeDisciplin() {
         System.out.println("Indtast bruger-ID på det medlem, du ønsker at fjerne en disciplin fra.");
-        String navn = scanner.nextLine();
+        int brugerID = TryCatch.indtastTal();
+        scanner.nextLine();
         for (Medlem m : Medlem.medlemmer) {
-            if (m.navn == navn && m instanceof CompetitiveSwimmer c) {
+            if (m.brugerID == brugerID && m instanceof CompetitiveSwimmer c) {
                     System.out.println("Hvilken disciplin ønsker du at tilføje til svømmeren?");
                     String disciplin = scanner.nextLine();
                     c.discipliner.add(disciplin);
