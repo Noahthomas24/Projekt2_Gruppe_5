@@ -1,0 +1,80 @@
+[{
+"brugerID":1,
+"medlemsstatus":"AKTIV_JUNIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Dennis Hej",
+"dateOfBirth":"2006-12-31",
+"saldo":"1000"
+},
+{
+"brugerID":2,
+"medlemsstatus":"AKTIV_JUNIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Oliver Kesi",
+"dateOfBirth":"2008-10-28",
+"saldo":"1000"
+},
+{
+"brugerID":3,
+"medlemsstatus":"AKTIV_JUNIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Gilli Angilo",
+"dateOfBirth":"2010-01-21",
+"saldo":"1000"
+},
+{
+"brugerID":4,
+"medlemsstatus":"AKTIV_SENIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Tu Pac",
+"dateOfBirth":"1983-02-18",
+"saldo":"1600"
+},
+{
+"brugerID":5,
+"medlemsstatus":"AKTIV_SENIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Fifty Cent",
+"dateOfBirth":"1965-12-16",
+"saldo":"1600"
+},
+{
+"brugerID":6,
+"medlemsstatus":"AKTIV_JUNIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Mikeal Felpsr",
+"dateOfBirth":"2006-12-31",
+"saldo":"1000"
+},
+{
+"brugerID":7,
+"medlemsstatus":"AKTIV_JUNIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Noah Carter",
+"dateOfBirth":"2008-10-28",
+"saldo":"1000"
+},
+{
+"brugerID":8,
+"medlemsstatus":"AKTIV_JUNIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Julius Bay",
+"dateOfBirth":"2010-01-21",
+"saldo":"1000"
+},
+{
+"brugerID":9,
+"medlemsstatus":"AKTIV_SENIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Safire Storm",
+"dateOfBirth":"1983-02-18",
+"saldo":"1600"
+},
+{
+"brugerID":10,
+"medlemsstatus":"AKTIV_SENIOR",
+"aktivitetsniveau":"Motionist",
+"navn":"Mr Morsing",
+"dateOfBirth":"1965-12-16",
+"saldo":"1600"
+}]

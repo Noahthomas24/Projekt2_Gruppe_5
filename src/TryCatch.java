@@ -7,8 +7,9 @@ public class TryCatch {
     public static int indtastTal(){
         while (true){
             String input = Medlem.scanner.nextLine();
+            // datatypes
             try {
-                return Integer.parseInt(input);
+                return Integer.parseInt(input); // konverterer string til int
             } catch (NumberFormatException e){
                 System.out.println("Ugyldigt valg, prøv igen");
             }

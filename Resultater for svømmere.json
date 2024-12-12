@@ -1,0 +1,81 @@
+[{
+"brugerID":9,
+"resultattid":"00:21:09.100",
+"session":"Stævne",
+"dato":"2024-01-01",
+"navn":"Safire Storm",
+"disciplin":"Brystsvømning",
+"hold":"AKTIV_SENIOR"
+},
+{
+"brugerID":9,
+"resultattid":"00:23:40.100",
+"session":"Stævne",
+"dato":"2024-01-01",
+"navn":"Safire Storm",
+"disciplin":"Crawl",
+"hold":"AKTIV_SENIOR"
+},
+{
+"brugerID":9,
+"resultattid":"00:24:04.100",
+"session":"Stævne",
+"dato":"2024-01-01",
+"navn":"Safire Storm",
+"disciplin":"Butterfly",
+"hold":"AKTIV_SENIOR"
+},
+{
+"brugerID":9,
+"resultattid":"00:27:12.100",
+"session":"Stævne",
+"dato":"2024-01-01",
+"navn":"Safire Storm",
+"disciplin":"Crawl",
+"hold":"AKTIV_SENIOR"
+},
+{
+"brugerID":9,
+"resultattid":"00:27:30.100",
+"session":"Stævne",
+"dato":"2024-01-01",
+"navn":"Safire Storm",
+"disciplin":"Butterfly",
+"hold":"AKTIV_SENIOR"
+},
+{
+"brugerID":9,
+"resultattid":"00:28:50.100",
+"session":"Stævne",
+"dato":"2024-01-01",
+"navn":"Safire Storm",
+"disciplin":"Brystsvømning",
+"hold":"AKTIV_SENIOR"
+},
+{
+"brugerID":9,
+"resultattid":"00:29:09.100",
+"session":"Stævne",
+"dato":"2024-01-01",
+"navn":"Safire Storm",
+"disciplin":"Brystsvømning",
+"hold":"AKTIV_SENIOR"
+},
+{
+"brugerID":9,
+"resultattid":"00:29:12.100",
+"session":"Stævne",
+"dato":"2024-01-01",
+"navn":"Safire Storm",
+"disciplin":"Crawl",
+"hold":"AKTIV_SENIOR"
+},
+{
+"brugerID":9,
+"resultattid":"00:29:40.100",
+"session":"Stævne",
+"dato":"2024-01-01",
+"navn":"Safire Storm",
+"disciplin":"Crawl",
+"hold":"AKTIV_SENIOR"
+}]

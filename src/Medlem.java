@@ -121,6 +121,25 @@ public class Medlem {
         return aktivitetsNiveau;
     }
 
+    public static boolean tjekRestance(int brugerID){
+        for (Medlem medlem : getMedlemmerIRestance()){
+            if (medlem.brugerID == brugerID) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static List<Medlem> getMedlemmerIRestance() {
+        ArrayList <Medlem> list = new ArrayList<Medlem>();
+        for (Medlem medlem : medlemmer){
+            if (medlem.saldo == 0){ // Restance = saldo = 0
+                list.add(medlem);
+            }
+        }
+        return list;
+    }
+
     public String toString(){
         return navn + " " + alder +" år - " +status;
     }

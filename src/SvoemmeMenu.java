@@ -139,6 +139,7 @@ public class SvoemmeMenu {
             System.out.println("Du har nu følgende muligheder");
             System.out.println("Tast '1' for at se en liste over alle medlemmer.");
             System.out.println("Tast '2' for at se en liste over medlemmer i restance.");
+            System.out.println("Tast '3' for at se en enkelt brugers betalingsstatus");
             System.out.println("Tast '0' for at gå til forrige side");
             int valg = TryCatch.indtastTal();
             if (valg == 0) break;
@@ -150,6 +151,18 @@ public class SvoemmeMenu {
                     }
                     break;
                 case 2: FileHandler.getRestanceLise();
+                    break;
+                case 3: // step 1: tast brugerID step 2: confirm
+                    System.out.println("Tast brugerID");
+                    int brugerid = TryCatch.indtastTal();
+                    boolean x = Medlem.tjekRestance(brugerid);// sætter parameter og kalder parameter
+                    System.out.println();
+                    for (Medlem m : Medlem.medlemmer){
+                        if (m.brugerID == brugerid){
+                            System.out.println(m);
+                            System.out.println(m.saldo);
+                        }
+                    }
                     break;
                 default:
                     System.out.println("Ikke en mulighed, prøv igen.");
