@@ -16,7 +16,7 @@ public class Resultat implements Comparable<Resultat> {
     String disciplin;
     LocalTime resTid;
     static LocalDate dato;
-    static Medlem medlem;
+    Medlem medlem;
     static String session; // Træning eller stævne
 
     // Formatter til formatering af tidspunkter
@@ -33,7 +33,7 @@ public class Resultat implements Comparable<Resultat> {
     }
 
     // Metode til at verificere bruger-ID
-    public static boolean checkID(int brugerID) {
+    public boolean checkID(int brugerID) {
         for (Medlem m : Medlem.medlemmer) {
             if (m.getBrugerID() == brugerID) {
                 medlem = m;
@@ -67,11 +67,6 @@ public class Resultat implements Comparable<Resultat> {
         int iD = keyboard.nextInt();
         System.out.println();
 
-        if (!checkID(iD)) {
-            System.out.println("Resultat blev ikke oprettet, da ID'et ikke eksisterer.");
-            return;
-        }
-
         // Indtast dato
         dato = TryCatch.indtastDato();
 
@@ -89,6 +84,7 @@ public class Resultat implements Comparable<Resultat> {
                 break;
             case 2:
                 System.out.println("Hvilket stævne?");
+                keyboard.nextLine();
                 session = Medlem.scanner.nextLine();
                 break;
         }
@@ -108,7 +104,7 @@ public class Resultat implements Comparable<Resultat> {
             String indtastetTid = keyboard.nextLine();
 
             try {
-                tid = LocalTime.parse(indtastetTid, DateTimeFormatter.ofPattern("mm:ss"));
+                tid = LocalTime.parse(indtastetTid, DateTimeFormatter.ofPattern("HH:mm:ss"));
                 korrektTid = true;
             } catch (RuntimeException e) {
                 System.out.println("Ugyldig tid, prøv igen");
