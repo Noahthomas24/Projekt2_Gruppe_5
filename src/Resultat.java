@@ -33,7 +33,7 @@ public class Resultat implements Comparable<Resultat> {
     }
 
     // Metode til at verificere bruger-ID
-    private static boolean checkID(int brugerID) {
+    public static boolean checkID(int brugerID) {
         for (Medlem m : Medlem.medlemmer) {
             if (m.getBrugerID() == brugerID) {
                 medlem = m;

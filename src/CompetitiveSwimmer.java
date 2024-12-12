@@ -19,11 +19,8 @@ public class CompetitiveSwimmer extends Medlem {
 
     // Bestemmer medlemmets status baseret på alder
     protected void bestemMedlemsStatus() {
-        // Sætter status for junior medlemmer
         if (alder < 18) status = Medlem.medlemsStatus.AKTIV_JUNIOR;
-        // Sætter status for senior medlemmer
         if (alder >= 18) status = Medlem.medlemsStatus.AKTIV_SENIOR;
-        // Ekstra check for ældre senior medlemmer
         if (alder >= 60) status = Medlem.medlemsStatus.AKTIV_SENIOR;
     }
 
@@ -50,22 +47,45 @@ public class CompetitiveSwimmer extends Medlem {
     }
 
     // Tilføjer en ny disciplin til svømmerens disciplinliste
-    public void addDisciplin(String disciplin) {
-        if (!discipliner.contains(disciplin)) {
-            discipliner.add(disciplin);
-        } else {
-            System.out.println("Den valgte disciplin er allerede tilføjet.");
+    public static void addDisciplin() {
+        boolean found = false;
+        System.out.println("Indtast brugerID på den ønskede kunde.");
+        int brugerID = scanner.nextInt();
+        scanner.nextLine();
+        for (Medlem m : Medlem.medlemmer) {
+            if (Medlem.medlemmer.get(brugerID-1) instanceof CompetitiveSwimmer c){
+                System.out.println("Hvilken disciplin ønsker du at tilføje til svømmeren?");
+                String disciplin = scanner.nextLine();
+                if (!c.discipliner.contains(disciplin)) {
+                    c.discipliner.add(disciplin);
+                    System.out.println("Disciplin tilføjet.");
+                } else {
+                    System.out.println("Den valgte disciplin er allerede tilføjet.");
+                }
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Ingen svømmer med det angivne bruger-ID blev fundet.");
         }
     }
 
     // Fjerner en disciplin fra svømmerens disciplinliste
-    public void removeDisciplin(String disciplin) {
-        if (discipliner.contains(disciplin)) {
-            discipliner.remove(disciplin);
-        } else {
-            System.out.println("Den valgte disciplin er ikke tilføjet til svømmeren.");
+    public static void removeDisciplin() {
+        System.out.println("Indtast bruger-ID på det medlem, du ønsker at fjerne en disciplin fra.");
+        String navn = scanner.nextLine();
+        for (Medlem m : Medlem.medlemmer) {
+            if (m.navn == navn && m instanceof CompetitiveSwimmer c) {
+                    System.out.println("Hvilken disciplin ønsker du at tilføje til svømmeren?");
+                    String disciplin = scanner.nextLine();
+                    c.discipliner.add(disciplin);
+                } else {
+                    System.out.println("Den valgte disciplin er ikke tilføjet til svømmeren.");
+                }
+            }
         }
-    }
+
 
     // Get-metoder
     public List<String> getDiscipliner() {
