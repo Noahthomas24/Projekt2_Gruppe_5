@@ -45,7 +45,6 @@ public class Resultat implements Comparable<Resultat> {
         return false;
     }
 
-
     @Override
     public String toString() {
         if (medlem == null) {
@@ -78,6 +77,7 @@ public class Resultat implements Comparable<Resultat> {
         // Vælg træning eller stævne
         System.out.println("Tast 1 for træningstid, tast 2 for stævne");
         int sessionsForm = Medlem.scanner.nextInt();
+        Medlem.scanner.nextLine();
         switch (sessionsForm) {
             case 1:
                 session = "Træningstid";
@@ -90,27 +90,8 @@ public class Resultat implements Comparable<Resultat> {
         }
 
         // Gemmer resultatet
-        LocalTime resTid = verificerTid();
+        LocalTime resTid = TryCatch.verificerTid();
         FileHandler.saveResult(new Resultat(iD, dato, session, disciplin, resTid));
-    }
-
-    // Verificerer at man indtaster en gyldig tid
-    public static LocalTime verificerTid() {
-        LocalTime tid = null;
-        boolean korrektTid = false;
-
-        while (!korrektTid) {
-            System.out.println("Indtast tid (hh:mm:ss)");
-            String indtastetTid = keyboard.nextLine();
-
-            try {
-                tid = LocalTime.parse(indtastetTid, DateTimeFormatter.ofPattern("HH:mm:ss"));
-                korrektTid = true;
-            } catch (RuntimeException e) {
-                System.out.println("Ugyldig tid, prøv igen");
-            }
-        }
-        return tid;
     }
 
     // Metode til at sortere resultaterne efter tid
@@ -124,7 +105,7 @@ public class Resultat implements Comparable<Resultat> {
     }
 
     // Filtrerer ift. junior og senior hold
-    public static List<Resultat> visResultaterForSpecifiktHold() {
+    private static List<Resultat> genererResultaterForSpecifiktHold() {
         List<Resultat> holdResultater = new ArrayList<>();
 
         System.out.println("Tast 1 for at se resultater for JUNIOR");
@@ -133,13 +114,15 @@ public class Resultat implements Comparable<Resultat> {
         switch (valg) {
             case 1:
                 for (Resultat r : resultater) {
-                    if (r.getDisciplin().contains("JUNIOR")) holdResultater.add(r);
+                    if (r.medlem.getMedlemsStatus() == Medlem.medlemsStatus.AKTIV_JUNIOR) holdResultater.add(r);
                 }
                 break;
 
             case 2:
                 for (Resultat r : resultater) {
-                    if (r.getDisciplin().contains("SENIOR")) holdResultater.add(r);
+                    if (r.medlem.getMedlemsStatus() == Medlem.medlemsStatus.AKTIV_SENIOR ||
+                        r.medlem.getMedlemsStatus() == Medlem.medlemsStatus.AKTIV_PENSIO)
+                        holdResultater.add(r);
                 }
                 break;
         }
@@ -147,9 +130,18 @@ public class Resultat implements Comparable<Resultat> {
         return holdResultater;
     }
 
+    public static void visAlleResultaterForSpecifiktHold(){
+        List<Resultat> alleResultater = new ArrayList<>();
+        alleResultater = genererResultaterForSpecifiktHold();
+        for (Resultat r:alleResultater){
+            System.out.println(r);
+            System.out.println();
+        }
+    }
+
     // Filtrerer det specifikke hold efter den specifikke disciplin
-    private static List<Resultat> visResultaterForSpecifikDisciplin() {
-        List<Resultat> disciplinResultater = visResultaterForSpecifiktHold();
+    private static List<Resultat> genererResultaterForSpecifikDisciplin() {
+        List<Resultat> disciplinResultater = genererResultaterForSpecifiktHold();
 
         // Menu til valg af disciplin
         System.out.println("Hvilken disciplin ønsker du at se resultater for?");
@@ -191,7 +183,7 @@ public class Resultat implements Comparable<Resultat> {
     // Viser de fem bedste resultater indenfor given disciplin.
     public static void visTop5Resultater() {
         List<Resultat> topFem = new ArrayList<>();
-        List<Resultat> specifikDisciplin = visResultaterForSpecifikDisciplin();
+        List<Resultat> specifikDisciplin = genererResultaterForSpecifikDisciplin();
 
         for (Resultat r : specifikDisciplin) {
             if (!topFem.contains(r.getBrugerID())) {
@@ -205,6 +197,7 @@ public class Resultat implements Comparable<Resultat> {
 
         for (Resultat r : topFem) {
             System.out.println(r);
+            System.out.println();
         }
     }
 

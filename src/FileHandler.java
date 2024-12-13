@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class FileHandler {
         static JSONArray jsonArray = new JSONArray();
 
+        // Initierer medlemmer, så der er nogen på forhånd
         public void InnitMedlemmer() throws JSONException {
             Medlem.medlemmer.add(new Medlem("Dennis Hej", LocalDate.of(2006, 12, 31), "Aktiv", "Kredit"));
             Medlem.medlemmer.add(new Medlem("Oliver Kesi", LocalDate.of(2008, 10, 28) , "Aktiv", "Kredit"));
@@ -31,6 +32,7 @@ public class FileHandler {
             jsonWriter();
         }
 
+        // Initierer resultater, så der er nogen på forhånd
         public void InnitResultater() throws JSONException {
             Resultat.resultater.add(new Resultat(6, LocalDate.of(2024, 01, 01), "Træning", "Crawl", LocalTime.of(0,29,12,100000000)));
             Resultat.resultater.add(new Resultat(7, LocalDate.of(2024, 01, 01), "Stævne", "Crawl", LocalTime.of(0,29,40,100000000)));
@@ -57,26 +59,10 @@ public class FileHandler {
             }
         }
 
+        //Skriver medlemmmet ind i filen når man opretter det
         public static void saveMedlem(Medlem medlem) throws JSONException {
             Medlem.medlemmer.add(medlem);
             jsonWriter();
-        }
-
-        public static void deleteMedlem(int brugerID) throws JSONException {
-            for (int i = 0; i < Medlem.medlemmer.size(); i++) {
-                if (Medlem.medlemmer.get(i).getBrugerID() == brugerID) {
-                    Medlem.medlemmer.remove(i);
-                    break;
-                }
-            }
-        }
-
-        public static void getRestanceLise() {
-            System.out.println("Følgende medlemmer er i gæld: ");
-            System.out.println();
-            for (Medlem m : Medlem.medlemmer) {
-                if (m.saldo > 0) System.out.println(m + " " + "Saldo: " + m.saldo);
-            }
         }
 
         public static void jsonWriter() throws JSONException {
@@ -132,9 +118,6 @@ public class FileHandler {
                     //det her stykke kode omdanner den ovenstående dateOfBirthString til en Localdate der kan bruges.
                     LocalDate dateOfBirth = LocalDate.parse(dateOfBirthString, DateTimeFormatter.ISO_LOCAL_DATE);
 
-                    /*System.out.println("Navn: " + navn + ", Fødselsdato: " + dateOfBirth +
-                            ", Medlemsstatus: " + medlemsstatus + ", Saldo: " + saldo);
-                    */
                     Medlem medlem = new Medlem(navn, dateOfBirth, medlemsstatus, saldo);
                     Medlem.medlemmer.add(medlem);
 
@@ -196,7 +179,7 @@ public class FileHandler {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     //Dette kode gør det modsatte. Den tager objektet og omdanner det til brugbare værdier
-                    int iD = jsonObject.getInt("Bruger-ID");
+                    int iD = jsonObject.getInt("brugerID");
                     String navn = jsonObject.getString("navn");
                     String disciplin = jsonObject.getString("disciplin");
                     String resultattidstring = jsonObject.getString("resultattid");
@@ -207,9 +190,6 @@ public class FileHandler {
                     LocalDate resultatDato = LocalDate.parse(dato, DateTimeFormatter.ISO_LOCAL_DATE);
 
                     LocalTime resultattid = LocalTime.parse(resultattidstring);
-
-                    /*System.out.println("Navn: " + navn + ", Disciplin: " + disciplin +
-                            ", Resultattid: " + resultattid + ", Session: " + session);*/
 
                     Resultat resultat = new Resultat(iD, resultatDato, session, disciplin, resultattid);
                     Resultat.resultater.add(resultat);

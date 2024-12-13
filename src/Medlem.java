@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Medlem {
     protected int brugerID;
+    protected static int noOfAccounts = 1;
     static Scanner scanner = new Scanner(System.in);
     public static List<Medlem> medlemmer = new ArrayList<>();
     protected final String navn;
@@ -15,25 +16,29 @@ public class Medlem {
     protected LocalDate dateOfBirth;
     protected int saldo;
     protected String betalingsStatus;
-    String aktivitetsNiveau = "Motionist";
+    String aktivitetsNiveau;
+    protected List<String> discipliner = new ArrayList<>();
 
     protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR, AKTIV_PENSIO, PASSIV}
     protected medlemsStatus status;
     protected String aktivPassiv;
 
     Medlem(String navn, LocalDate dateOfBirth, String aktivPassiv, String betalingsStatus) {
-        brugerID = medlemmer.size()+1;
+        brugerID = noOfAccounts;
+        noOfAccounts ++;
         this.navn = navn;
         alder = beregnAlder(dateOfBirth).getYears();
         this.aktivPassiv = aktivPassiv;
         this.betalingsStatus = betalingsStatus;
         this.dateOfBirth=dateOfBirth;
+        aktivitetsNiveau = "Motionist";
         bestemMedlemsStatus();
         medlemsPriser();
         betaltEllerKredit();
 
     }
 
+    //Metode til at oprette medlemmer og tilføje dem til Array
     public static void opretMedlem() throws JSONException {
         System.out.println("Her kan du oprette et nyt medlem.");
         System.out.println("Indtast navn");
@@ -66,18 +71,23 @@ public class Medlem {
         FileHandler.saveMedlem(new Medlem(navn, dateOfBirth, aktivPassiv, betalingsStatus));
     }
 
+    // Metode til at slette medlemmer
+    public static void deleteMedlem(int brugerID) {
+        for (Medlem m : medlemmer){
+            if (m.brugerID == brugerID){
+                medlemmer.remove(m);
+            }
+        }
+    }
+
+    // Beregn alder baseret på fødselsdato
     protected Period beregnAlder(LocalDate dateOfBirth) {
         LocalDate dagsDato = LocalDate.now();
         Period alder = Period.between(dateOfBirth, dagsDato);
         return alder;
     }
-    public int getBrugerID(){
-        return brugerID;
-    }
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
 
+    // Bestem medlemsstatus baseret på alder og aktiv/passiv
     protected void bestemMedlemsStatus() {
         if (aktivPassiv.contains("Passiv")) status = medlemsStatus.PASSIV;
         if (alder < 18) status = medlemsStatus.AKTIV_JUNIOR;
@@ -85,6 +95,7 @@ public class Medlem {
         if (alder >= 60) status = medlemsStatus.AKTIV_PENSIO;
     }
 
+    // Beregner abonnementsprisen
     protected int medlemsPriser(){
         if (status == medlemsStatus.AKTIV_JUNIOR) saldo = 1000;
         if (status == medlemsStatus.AKTIV_SENIOR) saldo = 1600;
@@ -93,8 +104,45 @@ public class Medlem {
         return saldo;
     }
 
+    // Opdaterer saldo til 0, hvis abonnement er betalt
     protected void betaltEllerKredit(){
         if (betalingsStatus.equalsIgnoreCase("Betalt")) saldo = 0;
+    }
+
+    // Metoder til at finde medlemmer i restance
+    public static void getRestanceListe() {
+        System.out.println("Følgende medlemmer er i gæld:");
+        for (Medlem m : medlemmer) {
+            if (m.saldo > 0) System.out.println(m + " Saldo: " + m.saldo);
+        }
+    }
+
+    // Get-metoder
+    public static List<Medlem> getMedlemmerIRestance() {
+        List<Medlem> list = new ArrayList<>();
+        for (Medlem medlem : medlemmer) {
+            if (medlem.saldo > 0) {
+                list.add(medlem);
+            }
+        }
+        return list;
+    }
+
+    public static boolean tjekRestance(int brugerID){
+        for (Medlem medlem : getMedlemmerIRestance()){
+            if (medlem.brugerID == brugerID) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getBrugerID() {
+        return brugerID;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public String getNavn() {
@@ -109,43 +157,21 @@ public class Medlem {
         return status;
     }
 
-    public int getSaldo(){
+    public int getSaldo() {
         return saldo;
     }
-    public int setSaldo(int saldo){
+
+    public int setSaldo(int saldo) {
         this.saldo = saldo;
         return saldo;
     }
 
-    public String getAktivitetsNiveau(){
+    public String getAktivitetsNiveau() {
         return aktivitetsNiveau;
     }
 
-    public static boolean tjekRestance(int brugerID){
-        for (Medlem medlem : getMedlemmerIRestance()){
-            if (medlem.brugerID == brugerID) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static List<Medlem> getMedlemmerIRestance() {
-        ArrayList <Medlem> list = new ArrayList<Medlem>();
-        for (Medlem medlem : medlemmer){
-            if (medlem.saldo == 0){ // Restance = saldo = 0
-                list.add(medlem);
-            }
-        }
-        return list;
-    }
-
-    public String toString(){
-        return brugerID+" "+navn + " " + alder +" år - " +status;
-    }
-
-    public static void main(String[] args) {
-        Medlem a = new Medlem("Julius", LocalDate.of(2000, 01, 29), "Aktiv", "Kredit");
-        System.out.println(a + " - "+a.getSaldo()+" kr.");
+    // toString metode
+    public String toString() {
+        return "BrugerID: " + brugerID + " " + navn + " " + alder + " år - " + status;
     }
 }

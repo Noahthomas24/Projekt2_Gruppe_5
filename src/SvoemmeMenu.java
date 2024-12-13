@@ -58,7 +58,7 @@ public class SvoemmeMenu {
                 case 2:
                     System.out.println("Vælg brugerID");
                     int brugerID = TryCatch.indtastTal();
-                    FileHandler.deleteMedlem(brugerID);
+                    Medlem.deleteMedlem(brugerID);
                 case 3:
                     System.out.println("Vælg brugerID");
                     Medlem valgtMedlem = Medlem.medlemmer.get(TryCatch.indtastTal()-1);
@@ -121,7 +121,7 @@ public class SvoemmeMenu {
             switch (valg){
                 case 1: Resultat.addResultat();
                     break;
-                case 2: Resultat.visResultaterForSpecifiktHold();
+                case 2: Resultat.visAlleResultaterForSpecifiktHold();
                     break;
                 case 3: Resultat.visTop5Resultater();
                     break;
@@ -151,7 +151,7 @@ public class SvoemmeMenu {
                         System.out.println(m);
                     }
                     break;
-                case 2: FileHandler.getRestanceLise();
+                case 2: Medlem.getRestanceListe();
                     break;
                 case 3: // step 1: tast brugerID step 2: confirm
                     System.out.println("Tast brugerID");

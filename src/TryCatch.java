@@ -1,9 +1,10 @@
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class TryCatch {
-    String password = "123";
 
+    // Verificerer at man indtaster et tal
     public static int indtastTal(){
         while (true){
             String input = Medlem.scanner.nextLine();
@@ -16,6 +17,7 @@ public class TryCatch {
         }
     }
 
+    // Verificerer at man indtaster datoer i korrekt format, og de ikke er i fremtiden
     public static LocalDate indtastDato(){
         LocalDate dato = null;
         boolean korrektDato = false;
@@ -26,29 +28,36 @@ public class TryCatch {
             String indtastetDato = Medlem.scanner.nextLine();
             try {
                 dato = LocalDate.parse(indtastetDato, formatter);
-                if(dato.isAfter(LocalDate.now())) {
-                    System.out.println("Du kan ikke vælge en dato i fremtiden, prøv igen");
-                }else {
+
+                if(dato.isAfter(LocalDate.now())){
+                    System.out.println("Datoen kan ikke være i fremtiden, prøv igen");
+                } else {
                     korrektDato = true;
                 }
-            } catch (RuntimeException e) {
+                } catch (RuntimeException e) {
                 System.out.println("Ugyldigt input, prøv igen.");
             }
         }
         return dato;
     }
 
-    // Bekræfter kodeord
-    public boolean verifyPassword() {
-        String password = "somethingsomething"; // husk at ændre password
-        System.out.println("Indtast kodeord");
-        Medlem.scanner.nextLine();
-        String kodeord = Medlem.scanner.nextLine();
-        while (!kodeord.equals(password)) {
-            System.out.println("Ugyldigt kodeord, prøv igen");
-            kodeord = Medlem.scanner.nextLine();
+    // Verificerer at man indtaster en gyldig tid til resultater
+    public static LocalTime verificerTid() {
+        LocalTime tid = null;
+        boolean korrektTid = false;
+
+        while (!korrektTid) {
+            System.out.println("Indtast tid (hh:mm:ss)");
+            String indtastetTid = Medlem.scanner.nextLine();
+
+            try {
+                tid = LocalTime.parse(indtastetTid, DateTimeFormatter.ofPattern("HH:mm:ss"));
+                korrektTid = true;
+            } catch (RuntimeException e) {
+                System.out.println("Ugyldig tid, prøv igen");
+            }
         }
-        return true;
+        return tid;
     }
 }
 
