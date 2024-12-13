@@ -142,11 +142,6 @@ public class Medlem {
     }
 
     public String toString(){
-        return brugerID+" "+navn + " " + alder +" år - " +status;
-    }
-
-    public static void main(String[] args) {
-        Medlem a = new Medlem("Julius", LocalDate.of(2000, 01, 29), "Aktiv", "Kredit");
-        System.out.println(a + " - "+a.getSaldo()+" kr.");
+        return "BrugerID: "+brugerID+" "+navn + " " + alder +" år - " +status;
     }
 }
