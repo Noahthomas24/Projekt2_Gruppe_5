@@ -26,7 +26,11 @@ public class TryCatch {
             String indtastetDato = Medlem.scanner.nextLine();
             try {
                 dato = LocalDate.parse(indtastetDato, formatter);
-                korrektDato = true;
+                if(dato.isAfter(LocalDate.now())) {
+                    System.out.println("Du kan ikke vælge en dato i fremtiden, prøv igen");
+                }else {
+                    korrektDato = true;
+                }
             } catch (RuntimeException e) {
                 System.out.println("Ugyldigt input, prøv igen.");
             }
