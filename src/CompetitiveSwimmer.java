@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompetitiveSwimmer extends Medlem {
-    String aktivitetsniveau = "Konkurrencesvømmer";
-
     // Konstruktør for en konkurrencesvømmer
     public CompetitiveSwimmer(String navn, LocalDate dateOfBirth, String betalingsStatus) {
         super(navn, dateOfBirth, "Aktiv", betalingsStatus);
+        aktivitetsNiveau = "Konkurrencesvømmer";
         this.discipliner = new ArrayList<>();
     }
 

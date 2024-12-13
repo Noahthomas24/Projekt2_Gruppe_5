@@ -15,7 +15,7 @@ public class Medlem {
     protected LocalDate dateOfBirth;
     protected int saldo;
     protected String betalingsStatus;
-    String aktivitetsNiveau = "Motionist";
+    String aktivitetsNiveau;
     protected List<String> discipliner = new ArrayList<>();
 
     protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR, AKTIV_PENSIO, PASSIV}
@@ -29,6 +29,7 @@ public class Medlem {
         this.aktivPassiv = aktivPassiv;
         this.betalingsStatus = betalingsStatus;
         this.dateOfBirth=dateOfBirth;
+        aktivitetsNiveau = "Motionist";
         bestemMedlemsStatus();
         medlemsPriser();
         betaltEllerKredit();
