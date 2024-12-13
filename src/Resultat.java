@@ -45,7 +45,6 @@ public class Resultat implements Comparable<Resultat> {
         return false;
     }
 
-
     @Override
     public String toString() {
         if (medlem == null) {
@@ -78,6 +77,7 @@ public class Resultat implements Comparable<Resultat> {
         // Vælg træning eller stævne
         System.out.println("Tast 1 for træningstid, tast 2 for stævne");
         int sessionsForm = Medlem.scanner.nextInt();
+        Medlem.scanner.nextLine();
         switch (sessionsForm) {
             case 1:
                 session = "Træningstid";
@@ -135,6 +135,7 @@ public class Resultat implements Comparable<Resultat> {
         alleResultater = genererResultaterForSpecifiktHold();
         for (Resultat r:alleResultater){
             System.out.println(r);
+            System.out.println();
         }
     }
 
@@ -196,6 +197,7 @@ public class Resultat implements Comparable<Resultat> {
 
         for (Resultat r : topFem) {
             System.out.println(r);
+            System.out.println();
         }
     }
 

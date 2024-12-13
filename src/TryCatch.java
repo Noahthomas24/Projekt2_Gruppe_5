@@ -3,8 +3,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class TryCatch {
-    String password = "123";
 
+    // Verificerer at man indtaster et tal
     public static int indtastTal(){
         while (true){
             String input = Medlem.scanner.nextLine();
@@ -17,6 +17,7 @@ public class TryCatch {
         }
     }
 
+    // Verificerer at man indtaster datoer i korrekt format, og de ikke er i fremtiden
     public static LocalDate indtastDato(){
         LocalDate dato = null;
         boolean korrektDato = false;
@@ -40,7 +41,7 @@ public class TryCatch {
         return dato;
     }
 
-    // Verificerer at man indtaster en gyldig tid
+    // Verificerer at man indtaster en gyldig tid til resultater
     public static LocalTime verificerTid() {
         LocalTime tid = null;
         boolean korrektTid = false;
