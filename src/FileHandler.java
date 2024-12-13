@@ -62,23 +62,6 @@ public class FileHandler {
             jsonWriter();
         }
 
-        public static void deleteMedlem(int brugerID) throws JSONException {
-            for (int i = 0; i < Medlem.medlemmer.size(); i++) {
-                if (Medlem.medlemmer.get(i).getBrugerID() == brugerID) {
-                    Medlem.medlemmer.remove(i);
-                    break;
-                }
-            }
-        }
-
-        public static void getRestanceLise() {
-            System.out.println("Følgende medlemmer er i gæld: ");
-            System.out.println();
-            for (Medlem m : Medlem.medlemmer) {
-                if (m.saldo > 0) System.out.println(m + " " + "Saldo: " + m.saldo);
-            }
-        }
-
         public static void jsonWriter() throws JSONException {
             jsonArray = new JSONArray();
             for (int i = 0; i < Medlem.medlemmer.size(); i++) {

@@ -90,27 +90,8 @@ public class Resultat implements Comparable<Resultat> {
         }
 
         // Gemmer resultatet
-        LocalTime resTid = verificerTid();
+        LocalTime resTid = TryCatch.verificerTid();
         FileHandler.saveResult(new Resultat(iD, dato, session, disciplin, resTid));
-    }
-
-    // Verificerer at man indtaster en gyldig tid
-    public static LocalTime verificerTid() {
-        LocalTime tid = null;
-        boolean korrektTid = false;
-
-        while (!korrektTid) {
-            System.out.println("Indtast tid (hh:mm:ss)");
-            String indtastetTid = keyboard.nextLine();
-
-            try {
-                tid = LocalTime.parse(indtastetTid, DateTimeFormatter.ofPattern("HH:mm:ss"));
-                korrektTid = true;
-            } catch (RuntimeException e) {
-                System.out.println("Ugyldig tid, prøv igen");
-            }
-        }
-        return tid;
     }
 
     // Metode til at sortere resultaterne efter tid
@@ -237,9 +218,5 @@ public class Resultat implements Comparable<Resultat> {
 
     public int getBrugerID() {
         return brugerID;
-    }
-
-    public static void main(String[] args) {
-        visAlleResultaterForSpecifiktHold();
     }
 }

@@ -68,6 +68,15 @@ public class Medlem {
         FileHandler.saveMedlem(new Medlem(navn, dateOfBirth, aktivPassiv, betalingsStatus));
     }
 
+    public static void deleteMedlem(int brugerID) {
+        for (Medlem m : medlemmer){
+            if (m.brugerID == brugerID){
+                medlemmer.remove(m);
+            }
+        }
+    }
+
+
     protected Period beregnAlder(LocalDate dateOfBirth) {
         LocalDate dagsDato = LocalDate.now();
         Period alder = Period.between(dateOfBirth, dagsDato);
@@ -123,6 +132,24 @@ public class Medlem {
         return aktivitetsNiveau;
     }
 
+    public static void getRestanceListe() {
+        System.out.println("Følgende medlemmer er i gæld: ");
+        System.out.println();
+        for (Medlem m : Medlem.medlemmer) {
+            if (m.saldo > 0) System.out.println(m + " " + "Saldo: " + m.saldo);
+        }
+    }
+
+    public static List<Medlem> getMedlemmerIRestance() {
+        ArrayList <Medlem> list = new ArrayList<>();
+        for (Medlem medlem : medlemmer){
+            if (medlem.saldo > 0){
+                list.add(medlem);
+            }
+        }
+        return list;
+    }
+
     public static boolean tjekRestance(int brugerID){
         for (Medlem medlem : getMedlemmerIRestance()){
             if (medlem.brugerID == brugerID) {
@@ -130,16 +157,6 @@ public class Medlem {
             }
         }
         return false;
-    }
-
-    public static List<Medlem> getMedlemmerIRestance() {
-        ArrayList <Medlem> list = new ArrayList<Medlem>();
-        for (Medlem medlem : medlemmer){
-            if (medlem.saldo == 0){ // Restance = saldo = 0
-                list.add(medlem);
-            }
-        }
-        return list;
     }
 
     public String toString(){

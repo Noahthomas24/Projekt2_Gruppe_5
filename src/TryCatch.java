@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class TryCatch {
@@ -39,17 +40,23 @@ public class TryCatch {
         return dato;
     }
 
-    // Bekræfter kodeord
-    public boolean verifyPassword() {
-        String password = "somethingsomething"; // husk at ændre password
-        System.out.println("Indtast kodeord");
-        Medlem.scanner.nextLine();
-        String kodeord = Medlem.scanner.nextLine();
-        while (!kodeord.equals(password)) {
-            System.out.println("Ugyldigt kodeord, prøv igen");
-            kodeord = Medlem.scanner.nextLine();
+    // Verificerer at man indtaster en gyldig tid
+    public static LocalTime verificerTid() {
+        LocalTime tid = null;
+        boolean korrektTid = false;
+
+        while (!korrektTid) {
+            System.out.println("Indtast tid (hh:mm:ss)");
+            String indtastetTid = Medlem.scanner.nextLine();
+
+            try {
+                tid = LocalTime.parse(indtastetTid, DateTimeFormatter.ofPattern("HH:mm:ss"));
+                korrektTid = true;
+            } catch (RuntimeException e) {
+                System.out.println("Ugyldig tid, prøv igen");
+            }
         }
-        return true;
+        return tid;
     }
 }
 
