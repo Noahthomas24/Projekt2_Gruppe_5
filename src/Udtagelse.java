@@ -21,7 +21,7 @@ public class Udtagelse {
 
         System.out.println("Vælg disciplin for udtagning:");
         System.out.println("1. Brystsvømning\n2. Crawl\n3. Butterfly\n4. Rygcrawl");
-        int valg = scanner.nextInt();
+        int valg = TryCatch.indtastTal();
         scanner.nextLine(); // Ryd scannerens buffer
 
         String disciplin;
@@ -37,7 +37,7 @@ public class Udtagelse {
         }
 
         System.out.println("Indtast det maksimale antal deltagere til konkurrencen:");
-        int maxDeltagere = scanner.nextInt();
+        int maxDeltagere = TryCatch.indtastTal();
 
         List<Resultat> deltagere = udtagKonkurrenceDeltagere(disciplin, maxDeltagere);
 
