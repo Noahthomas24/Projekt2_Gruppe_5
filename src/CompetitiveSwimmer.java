@@ -5,15 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompetitiveSwimmer extends Medlem {
-    // Liste til at gemme konkurrencesvømmerens discipliner
-    private List<String> discipliner;
-    String aktivitetsniveau;
+    String aktivitetsniveau = "Konkurrencesvømmer";
 
     // Konstruktør for en konkurrencesvømmer
     public CompetitiveSwimmer(String navn, LocalDate dateOfBirth, String betalingsStatus) {
         super(navn, dateOfBirth, "Aktiv", betalingsStatus);
         this.discipliner = new ArrayList<>();
-        this.aktivitetsNiveau = "Konkurrencesvømmer";
     }
 
     // Bestemmer medlemmets status baseret på alder
@@ -48,15 +45,15 @@ public class CompetitiveSwimmer extends Medlem {
     // Tilføjer en ny disciplin til svømmerens disciplinliste
     public static void addDisciplin() {
         boolean found = false;
-        System.out.println("Indtast brugerID på den ønskede kunde.");
+        System.out.println("Indtast brugerID på det ønskede medlem.");
         int brugerID = scanner.nextInt();
         scanner.nextLine();
         for (Medlem m : Medlem.medlemmer) {
-            if (m.brugerID == brugerID && m instanceof CompetitiveSwimmer c){
+            if (m.brugerID == brugerID){
                 System.out.println("Hvilken disciplin ønsker du at tilføje til svømmeren?");
                 String disciplin = scanner.nextLine();
-                if (!c.discipliner.contains(disciplin)) {
-                    c.discipliner.add(disciplin);
+                if (!m.discipliner.contains(disciplin)) {
+                    m.discipliner.add(disciplin);
                     System.out.println("Disciplin tilføjet.");
                 } else {
                     System.out.println("Den valgte disciplin er allerede tilføjet.");
@@ -72,19 +69,28 @@ public class CompetitiveSwimmer extends Medlem {
 
     // Fjerner en disciplin fra svømmerens disciplinliste
     public static void removeDisciplin() {
-        System.out.println("Indtast bruger-ID på det medlem, du ønsker at fjerne en disciplin fra.");
-        int brugerID = TryCatch.indtastTal();
+        boolean found = false;
+        System.out.println("Indtast brugerID på det ønskede medlem.");
+        int brugerID = scanner.nextInt();
         scanner.nextLine();
         for (Medlem m : Medlem.medlemmer) {
-            if (m.brugerID == brugerID && m instanceof CompetitiveSwimmer c) {
-                    System.out.println("Hvilken disciplin ønsker du at tilføje til svømmeren?");
-                    String disciplin = scanner.nextLine();
-                    c.discipliner.add(disciplin);
+            if (m.brugerID == brugerID){
+                System.out.println("Hvilken disciplin ønsker du at fjerne fra svømmeren?");
+                String disciplin = scanner.nextLine();
+                if (m.discipliner.contains(disciplin)) {
+                    m.discipliner.remove(disciplin);
+                    System.out.println("Disciplin fjernet.");
                 } else {
-                    System.out.println("Den valgte disciplin er ikke tilføjet til svømmeren.");
+                    System.out.println("Ugyldigt input, du skal vælge en disciplin, som svømmeren allerede har.");
                 }
+                found = true;
+                break;
             }
         }
+        if (!found) {
+            System.out.println("Ingen svømmer med det angivne bruger-ID blev fundet.");
+        }
+    }
 
 
     // Get-metoder

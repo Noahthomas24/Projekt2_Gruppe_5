@@ -16,6 +16,7 @@ public class Medlem {
     protected int saldo;
     protected String betalingsStatus;
     String aktivitetsNiveau = "Motionist";
+    protected List<String> discipliner = new ArrayList<>();
 
     protected enum medlemsStatus {AKTIV_JUNIOR, AKTIV_SENIOR, AKTIV_PENSIO, PASSIV}
     protected medlemsStatus status;
