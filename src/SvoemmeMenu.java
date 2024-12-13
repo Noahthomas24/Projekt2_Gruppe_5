@@ -121,7 +121,7 @@ public class SvoemmeMenu {
             switch (valg){
                 case 1: Resultat.addResultat();
                     break;
-                case 2: Resultat.visResultaterForSpecifiktHold();
+                case 2: Resultat.visAlleResultaterForSpecifiktHold();
                     break;
                 case 3: Resultat.visTop5Resultater();
                     break;
