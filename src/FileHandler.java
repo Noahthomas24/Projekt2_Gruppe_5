@@ -196,7 +196,7 @@ public class FileHandler {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     //Dette kode gør det modsatte. Den tager objektet og omdanner det til brugbare værdier
-                    int iD = jsonObject.getInt("Bruger-ID");
+                    int iD = jsonObject.getInt("brugerID");
                     String navn = jsonObject.getString("navn");
                     String disciplin = jsonObject.getString("disciplin");
                     String resultattidstring = jsonObject.getString("resultattid");

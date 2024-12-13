@@ -114,7 +114,6 @@ public class SvoemmeMenu {
             System.out.println("Tast '3' for at se top 5");
             System.out.println("Tast '4' for at tilføje en disciplin til en svømmer");
             System.out.println("Tast '5' for at fjerne en disciplin fra en svømmer");
-            System.out.println("Tast '6' for at udtage svømmere fra discipliner");
             System.out.println("Tast '0' for at gå til forrige side");
             int valg = TryCatch.indtastTal();
             if (valg == 0) break;
